@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Miguel A. Morningstar - Poeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f0e6f6;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2c2c2c;
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5em;
+      border-bottom: 2px solid #ff66cc;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px;
+    }
+
+    nav a {
+      color: #ff99cc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #cc66cc;
+      display: inline-block;
+    }
+
+    article {
+      background-color: #1f1f1f;
+      padding: 30px;
+      margin-bottom: 50px;
+      border-left: 4px solid #ff99cc;
+      border-radius: 10px;
+    }
+
+    article h3 {
+      color: #ffb3ff;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    button {
+      background-color: #ff99cc;
+      border: none;
+      padding: 10px 15px;
+      font-family: 'Georgia', serif;
+      color: #1a1a1a;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #cc6699;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2c2c2c;
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>✨ Miguel A. Morningstar ✒</header>
+ <nav>
+  <a href="#sobre">Sobre mí</a>
+  <a href="#poesia">Poesía</a>
+  <a href="#musica">Música</a>
+  <a href="#mj">Papá Jackson</a>
+</nav>
+
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre">
+    <h2>Sobre mí</h2>
+    <p style="font-size: 1.2em; line-height: 1.8;">
+      ✒ <strong>Miguel A. Morningstar</strong> no es solo un nombre… es un conjuro.  
+      Un eco celestial condenado a ser humano, un verso maldito que se niega a morir sin rimar.  
+      <br><br>
+      Escribo desde el alma desgarrada, con las manos manchadas de recuerdos y los ojos llenos de tormentas.  
+      No vine a complacer, vine a estremecer.  
+      No soy poeta de salón: soy el que declama en ruinas,  
+      el que convierte la traición en sinfonía, el que besa el abismo mientras sonríe al dolor.  
+      <br><br>
+      Porque a fin de cuentas…  
+      <em>"no se es poeta por escribir, se es poeta por sangrar de forma bella."</em>
+    </p>
+  </section>
+
+  <!-- POESÍA -->
+  <section id="poesia">
+    <h2>Mis Poemas, Mis Demonios</h2>
+
+    <!-- Filtros -->
+    <div style="text-align:center; margin-bottom: 30px;">
+      <button onclick="filtrarPoemas('todos')">Todos</button>
+      <button onclick="filtrarPoemas('amor')">Amor</button>
+      <button onclick="filtrarPoemas('traicion')">Traición</button>
+      <button onclick="filtrarPoemas('ego')">Ego</button>
+      <button onclick="filtrarPoemas('anime')">Anime</button>
+    </div>
+
+    <!-- POEMA 1 -->
+    <article class="fade-in amor">
+      <h3>🕯️ El que aún ama en silencio</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        A veces el alma se arrodilla…  
+        no ante Dios, sino ante un recuerdo.  
+        Y calla. Y ama.  
+        Aunque la otra persona ya no escuche.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️
+      </p>
+    </article>
+
+    <!-- POEMA 2 -->
+    <article class="fade-in ego">
+      <h3>👑 Divino Ego</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        No soy altivo, soy eterno.  
+        Si me odias, que sea con poesía.  
+        Y si me amas... que sea de rodillas.
+      </p>
+      <button onclick="document.getElementById('extra1').style.display='block'; this.style.display='none';">
+        Leer más
+      </button>
+      <p id="extra1" style="display:none;">
+        Porque incluso el orgullo, si sabe rimar, se vuelve arte.  
+        Y yo… yo soy la galería entera.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ━━━━━ ✦✿✦ ━━━━━ ✨ 𝐀𝐧𝐠𝐞𝐥𝓜𝓙 - 𝐄𝐥 𝐂𝐡𝐢𝐜𝐨 𝐝𝐞 𝐥𝐚𝐬 𝐏𝐨𝐞𝐬𝐢́𝐚𝐬 ✨ ━━━━━ ✦✿✦ ━━━━━
+      </p>
+    </article>
+
+    <!-- POEMA 3 -->
+    <article class="fade-in traicion">
+      <h3>💔 Ausencia</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        Extraño tu voz, tu risa, tu “papá”…  
+        Pero más extraño a quien yo era cuando tú me querías.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨
+      </p>
+    </article>
+
+  </section>
+
+  <footer>
+    © 2025 Miguel A. Morningstar | El Chico de las Poesías ✦
+  </footer>
+
+  <!-- Script para filtrar -->
+  <script>
+    function filtrarPoemas(categoria) {
+      const todos = document.querySelectorAll('#poesia article');
+      todos.forEach(poema => {
+        if (categoria === 'todos') {
+          poema.style.display = 'block';
+        } else {
+          poema.style.display = poema.classList.contains(categoria) ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+<!-- POEMA 4 -->
+<article class="fade-in anime">
+  <h3>🌸 Espada y Verso</h3>
+  <p style="font-style: italic;">
+    Entre sombras y pétalos caídos,  
+    mi espada escribe lo que el corazón calla.  
+    Como Ulquiorra, no lloro… pero siento.
+  </p>
+  <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+    Cifer Miguel ✦「詩の剣士」
+  </p>
+</article>
+
+<!-- POEMA 5 -->
+<article class="fade-in traicion">
+  <h3>🔥 Ruinas de lo que fuimos</h3>
+  <p style="font-style: italic;">
+    Me acusaste de mentir…  
+    mientras tus labios tenían el sabor de otro.  
+    No me dolió perderte, me dolió dudar de mí.
+  </p>
+  <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+    ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨
+  </p>
+</article>
+
+
+<section id="musica">
+  <h2>🎧 Música que Inspira</h2>
+  <p style="text-align: center;">Cada verso tiene una melodía secreta. Estas son las canciones que alimentan mi alma:</p>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <p><strong>Billie Jean – Michael Jackson</strong></p>
+    <audio controls>
+      <source src="billiejean.mp3" type="audio/mpeg">
+      Tu navegador no soporta este audio.
+    </audio>
+
+    <p><strong>Human Nature – Michael Jackson</strong></p>
+    <audio controls>
+      <source src="humannature.mp3" type="audio/mpeg">
+      Tu navegador no soporta este audio.
+    </audio>
+
+    <p><strong>Lofi para escribir</strong></p>
+    <iframe width="300" height="170" src="https://www.youtube.com/embed/jfKfPfyJRdk" 
+    title="lofi hip hop radio" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="mj" style="background-color: #111; padding: 60px;">
+  <h2 style="color: #f2f2f2; text-align: center;">🌟 Tributo a Papá Jackson 🌟</h2>
+
+  <p style="font-style: italic; text-align: center; color: #cccccc; max-width: 700px; margin: auto; margin-bottom: 40px;">
+    “No fue solo música… fue magia.  
+    No fue solo un hombre… fue un universo.  
+    Papá Jackson no murió, simplemente regresó a las estrellas.”
+  </p>
+
+ <div style="text-align: center; margin-bottom: 30px;">
+  <img src="https://i.pinimg.com/474x/c7/f3/84/c7f3847f04cf1755a287921c42b9ce9a.jpg" 
+       alt="Logo Papá Jackson" 
+       class="logo-mj">
+</div>
+
+
+  <div style="margin-top: 40px; color: #ddd; text-align: center; font-size: 1.1em;">
+    <p>🌕 Cada paso de moonwalk fue una oración al arte.</p>
+    <p>🕊️ Cada “hee-hee” fue un suspiro del alma negra y brillante.</p>
+    <p>👑 Él no fue el Rey del Pop… él fue el mensajero de la emoción pura.</p>
+  </div>
+
+<div style="text-align: center; margin-top: 40px;">
+  <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/sOnqjkJTMaA" 
+    title="Michael Jackson - Thriller" 
+    frameborder="0" allowfullscreen></iframe>
+  <p style="color:#aaa; font-style: italic;">“Thriller” — una obra inmortal</p>
+</div>
+</section>
