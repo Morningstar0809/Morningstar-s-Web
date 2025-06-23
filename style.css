@@ -1,0 +1,64 @@
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  background-color: #ff99cc;
+  border: none;
+  padding: 10px 15px;
+  font-family: 'Georgia', serif;
+  color: #1a1a1a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background-color: #cc6699;
+  color: #fff;
+}
+
+.bienvenida {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.entrada-texto {
+  font-size: 1.3em;
+  color: #ffccff;
+  font-style: italic;
+  opacity: 0;
+  animation: aparecer 3s ease forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+  }
+}
+
+
+.logo-mj {
+  width: 140px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff66cc;
+  animation: giro 12s linear infinite, resplandor 2s ease-in-out infinite alternate;
+}
+
+@keyframes giro {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes resplandor {
+  from { box-shadow: 0 0 20px #ff66cc; }
+  to { box-shadow: 0 0 40px #ff66cc, 0 0 60px #ff99ff; }
+}

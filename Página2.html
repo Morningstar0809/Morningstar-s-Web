@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+    <audio id="hoverSound" src="ruta-hover.mp3"></audio>
+    <script>
+  const hoverSound = document.getElementById("hoverSound");
+  document.querySelectorAll("nav a, h1, h2").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    });
+  });
+</script>
+<head>
+  <meta charset="UTF-8">
+  <title>Miguel A. Morningstar - Poeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Poesía con esencia y alma por Miguel A. Morningstar. Amor, traición, anime y homenaje a Michael Jackson. Bienvenido a un templo de emociones escritas.">
+
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f0e6f6;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+.bienvenida {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.entrada-texto {
+  font-size: 1.3em;
+  color: #ffccff;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecer 2s ease-out forwards;
+}
+
+#fondo-estrellas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    header {
+      background-color: #2c2c2c;
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5em;
+      border-bottom: 2px solid #ff66cc;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px;
+    }
+
+    nav a {
+      color: #ff99cc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #cc66cc;
+      display: inline-block;
+    }
+
+    article {
+      background-color: #1f1f1f;
+      padding: 30px;
+      margin-bottom: 50px;
+      border-left: 4px solid #ff99cc;
+      border-radius: 10px;
+    }
+
+    article h3 {
+      color: #ffb3ff;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    button {
+      background-color: #ff99cc;
+      border: none;
+      padding: 10px 15px;
+      font-family: 'Georgia', serif;
+      color: #1a1a1a;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #cc6699;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2c2c2c;
+      color: #999;
+    }
+
+.logo-mj {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #fff;
+  transition: transform 0.3s ease;
+}
+
+.logo-mj:hover {
+  transform: scale(1.1);
+}
+
+/* Animación suave al hacer scroll */
+.mj-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.mj-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    @keyframes giro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes resplandor {
+      from { box-shadow: 0 0 20px #ff66cc; }
+      to { box-shadow: 0 0 40px #ff66cc, 0 0 60px #ff99ff; }
+    }
+  </style>
+  
+</head>
+
+<body>
+  <header>✨ Miguel A. Morningstar ✒</header>
+  <nav>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#poesia">Poesía</a>
+    <a href="#musica">Música</a>
+    <a href="#mj">Papá Jackson</a>
+  </nav>
+  
+  <button class="modo-btn" onclick="toggleModo()">🌙 Cambiar modo</button>
+
+<section class="bienvenida">
+  <p class="entrada-texto">Bienvenido al rincón donde la poesía es espada,  
+  el dolor es arte,  
+  y Papá Jackson sigue reinando desde las estrellas.</p>
+</section>
+
+   <section id="sobre">
+    <h2 style="text-align: center; color: #ffccff;">📖 Sobre mí</h2>
+    <p style="max-width: 800px; margin: auto; font-size: 1.2em; line-height: 1.8; text-align: center;">
+      ✒ <strong>Miguel A. Morningstar</strong> no es solo un nombre... es una identidad fragmentada entre arte, abismo y redención.<br><br>
+
+      Soy poeta de la herida, trovador de la rabia elegante,  
+      el que convierte traumas en versos, y el deseo en metáfora peligrosa.  
+      A veces escribo con el corazón, otras con la cicatriz.  
+      <br><br>
+
+      Mi obra no conoce filtros: toco el amor, la traición, la sensualidad y la nostalgia,  
+      con un estilo que mezcla lírica clásica con ritmo callejero y alma de anime.  
+      Honro a <strong>Michael Jackson</strong> como un guía espiritual y artístico,  
+      y cada palabra que declamo lleva algo de su fuego inmortal.  
+      <br><br>
+
+      También soy performer digital, creador de personajes como <em>Daemon Risus</em>,  
+      amante del simbolismo japonés, explorador del ego poético,  
+      y defensor de que el arte debe doler, curar y provocar,  
+      todo en el mismo verso.  
+      <br><br>
+
+      Mis múltiples personalidades poéticas se manifiestan como firmas, cada una un universo distinto:
+      <br><br>
+
+      <strong>✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨</strong><br>
+      El alma pura del poeta. La voz melancólica del niño que aún ama. Con esta firma escribo desde la herida, con el suspiro tembloroso de lo perdido. Es mi yo más humano.<br><br>
+
+      <strong>━━━━━ ✦✿✦ ━━━━━ ✨ 𝐀𝐧𝐠𝐞𝐥𝓜𝓙 ✨ ━━━━━ ✦✿✦ ━━━━━</strong><br>
+      La esencia pop y divina. El chico de las poesías. Sensualidad, flow y corazón, inspirado por Papá Jackson. Este soy yo cuando canto en versos y brillo desde el alma.<br><br>
+
+      <strong>⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</strong><br>
+      El espadachín poético. Honorable, letal, lírico. En esta forma soy un guerrero del verso, con inspiración del anime, lo nipón y la disciplina de un samurái del alma.<br><br>
+
+      <strong>Cifer Miguel ✦「詩の剣士」</strong><br>
+      El nihilista elegante. Oscuro, frío, existencial. Esta firma es la sombra de mis emociones, el Ulquiorra que observa sin llorar, pero siente todo. Desde aquí se escribe lo que no se puede decir.<br><br>
+
+      <em>“No escribo poesía para ser leído...  
+      la escribo para que alguien, en silencio, se sienta menos solo.”</em>
+    </p>
+  </section>
+
+  <section id="poesia">
+    <h2>Mis Poemas, Mis Demonios</h2>
+
+    <div style="text-align:center; margin-bottom: 30px;">
+      <button onclick="filtrarPoemas('todos')">Todos</button>
+      <button onclick="filtrarPoemas('amor')">Amor</button>
+      <button onclick="filtrarPoemas('traicion')">Traición</button>
+      <button onclick="filtrarPoemas('ego')">Ego</button>
+      <button onclick="filtrarPoemas('anime')">Anime</button>
+    </div>
+
+    <article class="fade-in amor">
+      <h3>🔗 El que aún ama en silencio</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        A veces el alma se arrodilla…  
+        no ante Dios, sino ante un recuerdo.  
+        Y calla. Y ama.  
+        Aunque la otra persona ya no escuche.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️
+      </p>
+    </article>
+
+    <article class="fade-in ego">
+      <h3>👑 Divino Ego</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        No soy altivo, soy eterno.  
+        Si me odias, que sea con poesía.  
+        Y si me amas... que sea de rodillas.
+      </p>
+      <button onclick="document.getElementById('extra1').style.display='block'; this.style.display='none';">
+        Leer más
+      </button>
+      <p id="extra1" style="display:none;">
+        Porque incluso el orgullo, si sabe rimar, se vuelve arte.  
+        Y yo… yo soy la galería entera.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ━━━━━ ✦✿✦ ━━━━━ ✨ 𝐀𝐧𝐠𝐞𝐥𝓜𝓙 - 𝐄𝐥 𝐂𝐡𝐢𝐜𝐨 𝐝𝐞 𝐥𝐚𝐬 𝐏𝐨𝐞𝐬𝐢́𝐚𝐬 ✨ ━━━━━ ✦✿✦ ━━━━━
+      </p>
+    </article>
+
+    <article class="fade-in traicion">
+      <h3>💔 Ausencia</h3>
+      <p style="font-style: italic; line-height: 1.7;">
+        Extraño tu voz, tu risa, tu “papá”…  
+        Pero más extraño a quien yo era cuando tú me querías.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨
+      </p>
+    </article>
+    
+    <article class="fade-in anime">
+      <h3>🌸 Espada y Verso</h3>
+      <p style="font-style: italic;">
+        Entre sombras y pétalos caídos,  
+        mi espada escribe lo que el corazón calla.  
+        Como Ulquiorra, no lloro… pero siento.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        Cifer Miguel ✦「詩の剣士」
+      </p>
+    </article>
+
+    <article class="fade-in traicion">
+      <h3>🔥 Ruinas de lo que fuimos</h3>
+      <p style="font-style: italic;">
+        Me acusaste de mentir…  
+        mientras tus labios tenían el sabor de otro.  
+        No me dolió perderte, me dolió dudar de mí.
+      </p>
+      <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+        ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨
+      </p>
+    </article>
+
+    <article class="fade-in anime">
+  <h3>⚖️ Donde No Se Pide, No Se Ofrece</h3>
+  <p style="font-style: italic; line-height: 1.7;">
+    ¿De qué sirve la risa,<br>
+    si en tu broma se escurre veneno?<br>
+    ¿De qué sirve el "solo jugaba",<br>
+    cuando el juego nunca fue nuestro?<br><br>
+
+    No todo lo íntimo es sagrado,<br>
+    y no todo lo mostrado es arte;<br>
+    a veces, lo grotesco se disfraza de gracia,<br>
+    esperando que el otro calle y aguante.<br><br>
+
+    ¿Dónde quedó el consentimiento?<br>
+    ¿En qué parte del código de respeto<br>
+    decidiste tachar la línea<br>
+    que divide el deseo del descaro?<br><br>
+
+    La confianza no es un pasillo sin cerrojos,<br>
+    ni el silencio es señal de permiso.<br>
+    Tu osadía cruzó sin mirar,<br>
+    como quien lanza fuego en una casa ajena.<br><br>
+
+    Y luego llega el eco de terceros:<br>
+    "Perdonalo… no fue pa’ malo."<br>
+    Como si el daño necesitara intención<br>
+    para hundirse en la carne del recuerdo.<br><br>
+
+    Jugaste con fuego sin ser llama,<br>
+    tocaste con ojos lo que no se ofrecía,<br>
+    y cuando el muro fue alzado…<br>
+    te escudaste en una risa vacía.<br><br>
+
+    No era odio, ni juicio, ni celo…<br>
+    era <em>asco</em>, sí, pero también decepción.<br>
+    No por lo que mostraste,<br>
+    sino por creer que tenías el derecho a hacerlo.<br><br>
+
+    Yo no pedí, no insinué, no provoqué.<br>
+    Fuiste tú quien abrió la puerta a empujones,<br>
+    creyendo que mi atención era un premio<br>
+    a tu osadía mal dirigida.<br><br>
+
+    Y ahora, aunque intentes barrer las cenizas,<br>
+    yo no olvido el humo en mi pecho,<br>
+    ni el sabor amargo del desamparo<br>
+    envuelto en un “solo bromeaba”.<br><br>
+
+    No…<br>
+    En mi mundo, donde se honra lo íntimo,<br>
+    mostrar sin ser pedido<br>
+    no es valentía…<br>
+    es violencia envuelta en picardía.<br><br>
+
+    Así que guárdate tus juegos sin reglas,<br>
+    y aprende esto para siempre:<br><br>
+
+    <strong>*Donde no se pide, no se ofrece.*</strong><br>
+    Donde no hay mutuo deseo,<br>
+    no hay derecho a cruzar fronteras.<br>
+    Porque si de algo me jacto hoy…<br>
+    es de no mirar atrás<br>
+    cuando me han faltado el respeto.
+  </p>
+  <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+    ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️
+  </p>
+</article>
+
+<article class="fade-in anime">
+  <h3>🚫 No Cruces La Línea</h3>
+  <p style="font-style: italic; line-height: 1.7;">
+    Hay una línea delgada,<br>
+    entre la duda y el deseo,<br>
+    entre el juego y la caída,<br>
+    entre el fuego y el veneno.<br><br>
+
+    No es un muro ni es censura,<br>
+    ni es prejuicio disfrazado,<br>
+    es un límite sagrado<br>
+    que protege la ternura.<br><br>
+
+    No todo impulso es derecho,<br>
+    ni todo "sí" es consentimiento,<br>
+    hay verdades que, en silencio,<br>
+    gritan más que un juramento.<br><br>
+
+    Yo también dudé un segundo,<br>
+    cedí al borde del abismo,<br>
+    pero hay líneas que, si cruzas,<br>
+    te borrás del espejismo.<br><br>
+
+    ¿Quién te dijo que un cuerpo<br>
+    puede invadirse sin alma?<br>
+    ¿Que lo íntimo se impone<br>
+    sin respetar la calma?<br><br>
+
+    No todo lo que excita<br>
+    construye una conexión.<br>
+    No todo lo que vibra<br>
+    te lleva a una canción.<br><br>
+
+    Hay gestos que son violencia<br>
+    envueltos en confusión,<br>
+    y un video no es un verso<br>
+    si no nace del corazón.<br><br>
+
+    ¿Querés tocarme el alma?<br>
+    Primero tocá mi mente.<br>
+    No se cruza lo invisible<br>
+    como quien pisa el presente.<br><br>
+
+    No soy tu cuerpo en vitrina,<br>
+    no soy tu impulso embotado.<br>
+    Soy un universo en guerra<br>
+    que apenas va despertando.<br><br>
+
+    No me hables de deseo<br>
+    si no sabés de respeto.<br>
+    El alma que se violenta<br>
+    llora por dentro en secreto.<br><br>
+
+    Y no me llames "cerrado"<br>
+    por poner un freno firme,<br>
+    que arrepentirse, compadre,<br>
+    significa <em>tardar en redimirse</em>.<br><br>
+
+    Prefiero cargar el hielo<br>
+    antes que fingir el fuego,<br>
+    prefiero un alma limpia<br>
+    que un corazón sin apego.<br><br>
+
+    La línea no es una cárcel,<br>
+    es el arte del cuidado.<br>
+    No te acerques sin permiso…<br>
+    O serás un recuerdo quemado.
+  </p>
+  <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+    ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️
+  </p>
+</article>
+
+<article class="fade-in anime">
+  <h3>🩸 Dulce Crisis Emocional</h3>
+  <p style="font-style: italic; line-height: 1.7;">
+    Hay algo exquisito en perder la cordura,<br>
+    una dulzura amarga, una fiebre que dura.<br>
+    Me hundo en lo roto con clase letal,<br>
+    como un príncipe oscuro en su ritual.<br><br>
+
+    Las lágrimas bajan, pero me saben a vino,<br>
+    brindando por cada traición del destino.<br>
+    Mi pecho es un templo con grietas doradas,<br>
+    y en cada fractura… las llamas sagradas.<br><br>
+
+    El dolor me desnuda sin pedir permiso,<br>
+    y yo me dejo, con placer indeciso.<br>
+    Porque hay placer en lo que arde y no mata,<br>
+    una pasión salvaje que todo lo desata.<br><br>
+
+    No pido consuelo, no busco piedad,<br>
+    prefiero la noche, la sombra, la tempestad.<br>
+    Soy adicto a la pena que ruge en mi pecho,<br>
+    me arrastra, me azota… y yo le echo el lecho.<br><br>
+
+    ¡Ah, qué delicia caer desde lo alto!<br>
+    Sentir que me rompo… y aún así salto.<br>
+    Me beso con monstruos, los invito a cenar,<br>
+    y cuando me muerden… los empiezo a amar.<br><br>
+
+    ¿Quién necesita paz cuando la tormenta gime?<br>
+    ¿Quién busca luz si la oscuridad redime?<br>
+    Yo bailo con caos en la punta de un filo,<br>
+    y sonrío sangrando… eso es lo mío.<br><br>
+
+    Me excita esta guerra que tengo conmigo,<br>
+    el arte de llorar mientras me bendigo.<br>
+    Porque ser fuerte es muy aburrido,<br>
+    prefiero ser hermoso… pero malherido.<br><br>
+
+    Las voces que susurran son mi orquesta,<br>
+    y en su canto turbio, hallé mi fiesta.<br>
+    El abismo me guiña, me quiere seducir,<br>
+    y yo le coqueteo… lo dejo venir.<br><br>
+
+    No soy víctima, soy el veneno y el trago,<br>
+    el que se quema y aún pide más fuego.<br>
+    No me rescates, no traigas tu fe,<br>
+    mi infierno tiene clase y huele a té.<br><br>
+
+    El corazón late, pero como un tambor,<br>
+    marcando el ritmo de mi propio dolor.<br>
+    Y cada espasmo es un gozo divino,<br>
+    una sinfonía de sangre y destino.<br><br>
+
+    Lloro, sí, pero con estilo de dios,<br>
+    mis lágrimas valen más que tu voz.<br>
+    Porque hay gloria en esta condena,<br>
+    y mi locura… ya no tiene cadena.<br><br>
+
+    Estoy roto, pero con sello de arte,<br>
+    mi sufrimiento tiene un toque elegante.<br>
+    Y si esta crisis me besa otra vez,<br>
+    le devuelvo el beso… con altivez.<br><br>
+
+    No quiero curarme, me gusta la herida,<br>
+    es mi musa, mi droga, mi vida.<br>
+    Y si mañana amanezco sin razón,<br>
+    al menos morí con pura pasión.<br><br>
+
+    Así que brindemos por esta ruina,<br>
+    por este éxtasis que me domina.<br>
+    La dulce crisis me vuelve a llamar…<br>
+    y yo corro a sus brazos, listo para pecar.
+  </p>
+  <p style="text-align: right; font-family: cursive; color: #ffcce6;">
+    ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️
+  </p>
+</article>
+
+
+  </section>
+
+  <section id="musica">
+    <h2>🎵 Música que Inspira</h2>
+    <p style="text-align: center;">Cada verso tiene una melodía secreta. Estas son las canciones que alimentan mi alma:</p>
+    <div style="text-align: center; margin-top: 20px;">
+      <p><strong>Billie Jean – Michael Jackson</strong></p>
+      <audio controls>
+        <source src="Audio\billiejean.mp3" type="audio/mpeg">
+        Tu navegador no soporta este audio.
+      </audio>
+
+      <p><strong>Speed Demon – Michael Jackson</strong></p>
+      <audio controls>
+        <source src="Audio\speeddemon.mp3" type="audio/mpeg">
+        Tu navegador no soporta este audio.
+      </audio>
+
+      <p><strong>Who is It – Michael Jackson</strong></p>
+      <audio controls>
+        <source src="Audio\whoisit.mp3" type="audio/mpeg">
+        Tu navegador no soporta este audio.
+      </audio>
+
+      <p><strong>Lofi para escribir</strong></p>
+      <iframe width="300" height="170" src="https://www.youtube.com/embed/jfKfPfyJRdk" 
+      title="lofi hip hop radio" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="mj" class="mj-fade" style="background-color: #111; padding: 60px;">
+  <h2 style="color: #f2f2f2; text-align: center;">🌟 Tributo a Papá Jackson 🌟</h2>
+
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img 
+      src="https://i.pinimg.com/474x/c7/f3/84/c7f3847f04cf1755a287921c42b9ce9a.jpg" 
+      alt="Logo Papá Jackson" 
+      class="logo-mj">
+  </div>
+
+  <p style="font-style: italic; text-align: center; color: #cccccc; max-width: 700px; margin: auto; margin-bottom: 40px;">
+    “No fue solo música… fue magia.  
+    No fue solo un hombre… fue un universo.  
+    Papá Jackson no murió, simplemente regresó a las estrellas.”
+  </p>
+
+  <div style="text-align: center;">
+    <img 
+      src="https://www.venus.com.py/wp-content/uploads/2016/06/Michael-michael-jackson-32789397-1082-1263.jpg" 
+      alt="Michael Jackson" 
+      style="width: 250px; border-radius: 15px; box-shadow: 0 0 20px #ffccff;">
+  </div>
+
+  <div style="margin-top: 40px; color: #ddd; text-align: center; font-size: 1.1em;">
+    <p>🌕 Cada paso de moonwalk fue una oración al arte.</p>
+    <p>💔 Cada “hee-hee” fue un suspiro del alma negra y brillante.</p>
+    <p>👑 Él no fue el Rey del Pop… él fue el mensajero de la emoción pura.</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <iframe width="320" height="180" src="https://www.youtube.com/embed/sOnqjkJTMaA"
+      title="Michael Jackson - Thriller" frameborder="0" allowfullscreen></iframe>
+    <p style="color:#aaa; font-style: italic;">“Thriller” — una obra inmortal</p>
+  </div>
+
+  <!-- Música -->
+  <div style="text-align:center; margin-top: 40px;">
+    <h3 style="color: #f2f2f2;">🎧 Escucha su legado</h3>
+    <audio controls style="margin-top: 10px;">
+      <source src="Audio\Leave Me Alone (2012 Remaster).mp3" type="audio/mp3">
+      Tu navegador no soporta el audio.
+    </audio>
+  </div>
+</section>
+
+<section id="frase-poética-del-dia" style="background-color: #1c1c1c; color: #f5f5f5; padding: 60px 20px; text-align: center;">
+  <h2 style="color: #ffccff;">📜 Frase Poética del Día</h2>
+  <div id="poema-container" style="max-width: 700px; margin: auto; margin-top: 30px; font-style: italic; font-size: 1.2em; line-height: 1.7;"></div>
+</section>
+
+
+  <footer>
+    © 2025 Miguel A. Morningstar | El Chico de las Poesías ✦
+  </footer>
+
+  <script>
+    function filtrarPoemas(categoria) {
+      const todos = document.querySelectorAll('#poesia article');
+      todos.forEach(poema => {
+        if (categoria === 'todos') {
+          poema.style.display = 'block';
+        } else {
+          poema.style.display = poema.classList.contains(categoria) ? 'block' : 'none';
+        }
+      });
+    }
+
+</script>
+
+<script>
+  const poemas = [
+    `A veces amar es un suicidio a cámara lenta,<br>
+    y aún así nos lanzamos…<br>
+    con sonrisa de mártir y alma abierta.`,
+
+    `No fui tu mejor opción,<br>
+    pero sí tu mejor poesía.`,
+
+    `Entre tus mentiras florecieron versos,<br>
+    y en mi dolor, nació arte.`,
+
+    `Te amé como a la luna:<br>
+    distante, imposible y en silencio.`,
+
+    `Me partiste el alma…<br>
+    y yo te escribí un poema en cada grieta.`
+  ];
+
+  const poemaElegido = poemas[Math.floor(Math.random() * poemas.length)];
+  document.getElementById("poema-container").innerHTML = poemaElegido;
+</script>
+
+
+<canvas id="fondo-estrellas"></canvas>
+
+<script>
+  const canvas = document.getElementById('fondo-estrellas');
+  const ctx = canvas.getContext('2d');
+  let estrellas = [];
+
+  function redimensionar() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', redimensionar);
+  redimensionar();
+
+  for (let i = 0; i < 120; i++) {
+    estrellas.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      d: Math.random() * 0.5 + 0.05
+    });
+  }
+
+  function animar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let estrella of estrellas) {
+      ctx.beginPath();
+      ctx.arc(estrella.x, estrella.y, estrella.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      estrella.y += estrella.d;
+      if (estrella.y > canvas.height) {
+        estrella.y = 0;
+        estrella.x = Math.random() * canvas.width;
+      }
+    }
+    requestAnimationFrame(animar);
+  }
+  
+  animar();
+</script>
+
+  <!-- ...lo que sea que tengas antes... -->
+
+  <canvas id="fondo-estrellas"></canvas>
+
+  <script>
+    // Código de animación de estrellas...
+  </script>
+
+<script>
+  // Efecto de aparición al hacer scroll
+  const mjSection = document.querySelector("#mj");
+  window.addEventListener("scroll", () => {
+    const top = mjSection.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      mjSection.classList.add("visible");
+    }
+  });
+
+  // Imagen dinámica (día/noche)
+  const imgMJ = document.querySelector(".logo-mj");
+  const hora = new Date().getHours();
+  if (hora >= 6 && hora < 18) {
+    imgMJ.src = "https://i.pinimg.com/474x/c7/f3/84/c7f3847f04cf1755a287921c42b9ce9a.jpg"; // Día
+  } else {
+    imgMJ.src = "https://i.pinimg.com/474x/1d/11/9f/1d119f7eec3b1cc5be8dbe7a2f7bbdb9.jpg"; // Noche
+  }
+
+</script>
+</body>
+</html>
