@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miguel A. Morningstar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Estilo de AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+ 
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: Georgia, serif;
+      padding: 30px;
+    }
+
+   .tarjeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  border: 2px solid gold;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  max-width: 700px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px gold;
+}
+
+.tarjeta img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid gold;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h4 {
+  font-size: 1.4em;
+  margin-bottom: 5px;
+  color: #FFD700;
+}
+
+.info p {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.info a {
+  color: #FFD700;
+  text-decoration: underline;
+}
+
+
+    /* === ANIMACIONES DE FONDO === */
+    @keyframes fondoCambiando {
+      0% { background: linear-gradient(135deg, #1a1a1a, #330033); }
+      25% { background: linear-gradient(135deg, #0d1a2b, #00334d); }
+      50% { background: linear-gradient(135deg, #1a1a1a, #262626); }
+      75% { background: linear-gradient(135deg, #2b1a1a, #4d0000); }
+      100% { background: linear-gradient(135deg, #1a1a1a, #330033); }
+    }
+
+    @keyframes gradienteSuave {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 50%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* === ESTILOS GENERALES === */
+    body {
+      color: white;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      animation: fondoCambiando 30s infinite;
+      background: linear-gradient(-45deg, #330033, #00334d, #262626, #4d0000, #710193, #2C041C, #051094, #1520a6);
+      background-size: 400% 400%;
+      animation: gradienteSuave 30s ease infinite;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px;
+      background: #121212;
+      border-bottom: 3px solid #ff66cc;
+      font-size: 2em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #1a1a1a;
+      padding: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: rgba(255, 153, 204, 0.85);
+      border: none;
+      padding: 10px 20px;
+      color: #1a1a1a;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.6s ease;
+      box-shadow: 0 0 8px #ff99cc;
+    }
+
+    nav button:hover {
+      background: #cc6699;
+      color: #fff;
+      box-shadow: 0 0 16px #ff99cc;
+      transform: scale(1.05);
+    }
+
+    .seccion {
+      display: none;
+      padding: 40px;
+    }
+
+    .seccion.activa {
+      display: block;
+    }
+
+    .tarjeta {
+      background: rgba(30, 30, 30, 0.8);
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 153, 204, 0.4);
+      transition: 0.6s ease;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
+    }
+
+    h3 {
+      color: #ffccff;
+      text-shadow: 0 0 5px #ff99cc;
+    }
+
+    .bienvenida {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .bienvenida h1 {
+      font-size: 2.5em;
+      color: #ff99cc;
+      margin-bottom: 20px;
+    }
+
+    .bienvenida p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: auto;
+      color: #ddd;
+    }
+
+    .frase-aleatoria {
+      margin-top: 40px;
+      font-size: 1.3em;
+      color: #ffb3ff;
+      font-style: italic;
+      transition: opacity 0.5s ease;
+    }
+
+    .bio-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .bio-texto {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .bio-ficha {
+      flex: 1;
+      min-width: 250px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 12px #ff99cc;
+      text-align: center;
+    }
+
+    .bio-ficha img {
+      width: 130px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    .bio-ficha h2 {
+      color: #ffb3ff;
+      margin-bottom: 10px;
+    }
+
+    .bio-ficha p {
+      font-size: 1em;
+      margin: 6px 0;
+      color: #eee;
+    }
+
+    .contacto-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #ff66cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .contacto-btn:hover {
+      background: #cc3399;
+    }
+
+/* === FONDO CAMBIANTE SUAVE Y POÉTICO === */
+body {
+  color: white;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  background: linear-gradient(-45deg, #330033, #00334d, #262626, #4d0000);
+  background-size: 400% 400%;
+  animation: gradienteSuave 30s ease infinite;
+}
+
+@keyframes gradienteSuave {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    /* === BOTONES QUE CAMBIAN SUAVEMENTE CON EL FONDO === */
+
+    nav button {
+  background: rgba(255, 153, 204, 0.85);
+  border: none;
+  padding: 10px 20px;
+  color: #1a1a1a;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.6s ease;
+  box-shadow: 0 0 8px #ff99cc;
+}
+
+nav button:hover {
+  background: #cc6699;
+  color: #fff;
+  box-shadow: 0 0 16px #ff99cc;
+  transform: scale(1.05);
+}
+
+.tarjeta {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid gold;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
+}
+
+h3 {
+  color: #ffccff;
+  text-shadow: 0 0 5px #ff99cc;
+}
+
+/* === APARTADO DE SOCIOS === */
+
+/* Estilos base compartidos */
+.seccion h3 {
+  font-size: 2.2em;
+  color: #ffd700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Tarjetas visuales */
+.tarjeta {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Contenedor individual */
+.amigo, .socio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+/* Imágenes */
+.amigo img, .socio img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffdd57;
+}
+
+/* Texto */
+.info h4 {
+  font-size: 1.4em;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+.info p {
+  font-size: 1em;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+/* Enlaces */
+.info a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}
+
+/* === PÁGINA ADAPTADA A MÓVILES === */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #121212;
+  color: white;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Secciones */
+.seccion {
+  margin-bottom: 60px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .tarjeta {
+    padding: 15px;
+  }
+
+  .amigo, .socio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .amigo img, .socio img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+
+  .info h4 {
+    font-size: 1.2em;
+  }
+
+  .info p {
+    font-size: 0.95em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    ✨ Miguel A. Morningstar ✒
+  </header>
+
+  <section class="bienvenida">
+    <h1>Bienvenido al Templo Poético</h1>
+    <p>Un rincón donde la poesía es espada, el dolor es arte, y Papá Jackson sigue reinando desde las estrellas.</p>
+    <br>
+    <p>Despliega una sección para empezar tu viaje.</p>
+    <div class="frase-aleatoria" id="fraseAleatoria"></div>
+  </section>
+  
+   <nav>
+    <button onclick="mostrar('sobre')">Sobre mí</button>
+    <button onclick="mostrar('amigos')">Amigos</button>
+    <button onclick="mostrar('socios')">Socios</button>
+  </nav>
+  
+  <section id="sobre" class="seccion">
+    <div class="tarjeta bio-container">
+      <div class="bio-texto">
+       <h3>Sobre mí</h3>
+        <p>Miguel A. Morningstar es más que un nombre: es un eco, una marca y un estilo de vida. Poeta colombiano, amante del arte con alma, devoto de Michael Jackson —a quien llama con cariño “Papá Jackson”— y creador de mundos donde el dolor rima con el poder.</p>
+        <p>A través de marcas poéticas como ✒ Miguel A. Morningstar, 𝐀𝐧𝐠𝐞𝐥𝓜𝓙 o Cifer Miguel, transforma su historia en versos, ironías y universos alternativos.</p>
+        <p>En sus escritos conviven demonios elegantes, niños rotos, egos divinos, promesas traicionadas y recuerdos que no saben morir.</p>
+        <p style="text-align: right; font-style: italic; color: #ffd700;">— ✒ Miguel A. Morningstar ✨</p>
+        <p><strong>🎨 Estilo:</strong> Poesía con alma, lírica intensa, provocadora y emocional</p>
+        <p><strong>🍬 Personalidad:</strong> Irónico, pasional, observador, con cicatrices que escriben solas</p>
+        <p><strong>📚 Obras destacadas:</strong> Ego Divino, Plegaria del Ego, Códice Oscuro</p>
+        <p><strong>🏆 Logros:</strong><br>- Fundador de un templo poético virtual<br>- Más de 100 poemas escritos<br>- Homenaje constante a Michael Jackson<br>- Obtener el Platino de God of War III</p>
+        <p><strong>🌸 Marcas poéticas:</strong><br>✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br>━━━━━ ✦✿✦ ━━━━━<br>✨ 𝐀𝐧𝐠𝐞𝐥𝓜𝓙 - 𝐄𝐥 𝐂𝐡𝐢𝐜𝐨 𝐝𝐞 𝐥𝐚𝐬 𝐏𝐨𝐞𝐬𝐢́𝐚𝐬 ✨<br>━━━━━ ✦✿✦ ━━━━━<br>⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️<br>🦇 Cifer Miguel</p>
+        <p><strong>🖋️ Fragmento:</strong><br><em>“Amo tan fuerte que cuando me rompen, escribo universos con los pedazos.”</em></p>
+        <a href="#contacto" class="contacto-btn">Contactar</a>
+      </div>
+      <div class="bio-ficha">
+        <img src="https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/481243265_1956928664799001_6733276374233621446_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEtL27ghqhuhznodPcd-VMRLnY0PSi3cL8udjQ9KLdwv7z1KudTexTg91mpA3DHsucSXNsBATrVC82ghKqJT_4i&_nc_ohc=TYI-dvH-5xcQ7kNvwGcsNcF&_nc_oc=AdlTjO-jNswGhdxiI0529thOPuiCbBODWDfRZ9UoOiJR_ziklhxv0GoLig3parJZr-o&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=k6xVZLK64RRH2h2QxrPOYw&oh=00_AfPTYuahRkJG0bd1r0NDqtBQqInvASPSpQCN02Z7cF2J6w&oe=685F748C" alt="Miguel A. Morningstar">
+        <h2>Miguel A. Morningstar</h2>
+        <p><strong>Alias:</strong><br> El Chico de las Poesías</br>Miguel Movistar (Por Kleiver)<br> Polla Imponente<br> Stultus Poeta<br> Negro (Por Laufey, Ashe y Xrey)<br> Negrón (Por Gogetto) <br> Ozuna (Por Dreaming) <br> Señor Jackson Morningstar (Por DSANS) <br> Rehimon (Por JP Preciado) <br> Nicso (Apodo más icónico) <br> Nisco (Apodo nacido en base a un error y usado más frecuentemente en él por Laufey, Ashe, y Gogetto)</p>
+        <p><strong>Nacimiento poético:</strong><br> 2024</p>
+        <p><strong>Tipo de alma:</strong><br> Oscura, rosa, brillante... según el verso</p>
+        <p><strong>Residencia:</strong><br> Las sombras de un cuaderno abierto</p>
+        <p><strong>Especialidad:</strong><br> Poesía emocional, performance lírico, estética visual</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="amigos" class="seccion">
+    <div class="tarjeta" data-aos="fade-right">
+      <h3>Asahe.js</h3>
+      <p>El compa que nunca se va. Hermano de versos y de batallas.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Juanazo Over Heaven (Consejero & Resolvedor)</h3>
+      <img src="Página2ekisde\Fotos\file.jpg" alt="JuanOverHeaven">
+      <p>Con él, la poesía se vuelve carcajada. Leal hasta el último poema.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>.El Gogetto</h3>
+      <p>Filosofía, risas, y noches de reflexiones intensas.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>KingDrizzy</h3>
+      <p>Aliado de sombra y verso. Siempre firme, siempre sabio.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Xrey102</h3>
+      <p>Compañero de pluma, rival de rimas, alma gemela en la lírica. Cuando escribe, la controversia florece.</p>
+    </div>
+  </section>
+
+  <!-- Nueva sección de SOCIOS aquí -->
+  <section id="socios" class="seccion">
+    <div class="tarjeta">
+      <h3>Socios</h3>
+
+      <div class="socio">
+        <h4>JP Preciado</h4>
+        <p>Administrador del canal de poesía y provocador oficial.</p>
+      </div>
+
+      <div class="socio">
+        <h4>DSANS</h4>
+        <img src="Página2ekisde\Fotos\d738efa6-be58-4292-9cd0-0c67d100e099.jpg" alt="DSANS">
+        <p>Aliado creativo y creador de su propio universo digital.</p>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- === SCRIPTS Y FUNCIONES === -->
+  <script>
+    function mostrar(id) {
+      document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activa'));
+      document.getElementById(id).classList.add('activa');
+    }
+
+    const frases = [
+      { texto: "A veces uno cree que ciertas puertas ya están cerradas...", marca: "morningstar" },
+      { texto: "No te escribo, no porque no quiera, sino porque me volví promesa...", marca: "morningstar" },
+      { texto: "Solo quisiera sentir tu amor una última vez, para poder morir en paz...", marca: "angelmj" },
+      { texto: "¿Seguís ahí por costumbre, por descuido o por algo más?", marca: "angelmj" },
+      { texto: "Hay rendijas que se asoman cuando menos lo esperas...", marca: "angelmj" },
+      { texto: "Me arranco el alma y con sus jirones te escribo versos.", marca: "cifer" },
+      { texto: "No tengo corazón, tengo un poema a punto de estallar.", marca: "cifer" },
+      { texto: "Una katana de tinta corta más que el silencio.", marca: "shidou" },
+      { texto: "El filo de mi poesía deja heridas dulces.", marca: "shidou" },
+      { texto: "No hay espada que corte su nombre, no hay argumento que anule su voz, porque él vive en el templo donde antes reinaba yo.", marca: "morningstar" },
+      { texto: "Te llamé 'hija' en mis noches más frías, fuiste luz cuando todo se empezó a nublar, y hoy cargo un silencio que pesa en el pecho, un 'papá' que el tiempo no quiere soltar.", marca: "morningstar" },
+      { texto: "¿Cómo explicarte que aún te recuerdo? Que en cada noche a Dios yo le ruego: 'Que nunca le falte amor ni calor, aunque yo ya no sea su protector.'", marca: "angelmj" },
+      { texto: "¿A quién busco cuando nadie está? ¿A qué corazón que no volverá? Quizá no lo sepa, quizá nunca lo vea… pero algo me falta… y sé que me espera.", marca: "angelmj" },
+      { texto: "Y aquí me tienes, perdido en el duelo, amando a quien ya no me recordará, soñando que, en medio de sus brazos… tal vez, por un segundo, me pensará.", marca: "angelmj" }
+    ];
+
+    function mostrarFrasesAleatorias(marcaSeleccionada = null) {
+      const el = document.getElementById("fraseAleatoria");
+      setInterval(() => {
+        const filtradas = marcaSeleccionada
+          ? frases.filter(f => f.marca === marcaSeleccionada)
+          : frases;
+        const random = filtradas[Math.floor(Math.random() * filtradas.length)];
+        el.style.opacity = 0;
+        setTimeout(() => {
+          el.textContent = random.texto;
+          el.style.opacity = 1;
+        }, 300);
+      }, 6000);
+    }
+
+    mostrarFrasesAleatorias();
+  </script>
+</body>
+</html>
