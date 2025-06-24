@@ -2,9 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Miguel A. Morningstar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Estilo de AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
@@ -17,22 +16,20 @@
       padding: 30px;
     }
 
-   .tarjeta {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
+.tarjeta {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #d4af37;
+  border-radius: 15px;
   padding: 20px;
-  margin: 20px auto;
-  border: 2px solid gold;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  max-width: 700px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 30px auto;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tarjeta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px gold;
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 153, 204, 0.6);
 }
 
 .tarjeta img {
@@ -95,14 +92,15 @@ body:not(.fondo-poemas) {
   animation: gradienteSuave 20s ease infinite;
 }
 
-/* Fondo estrellado para la sección de poemas */
+/* FONDO DE NOCHE PARA LA SECCIÓN DE POEMAS */
 body.fondo-poemas {
-  background: url('https://i.pinimg.com/originals/98/e4/d9/98e4d9062f971d5107975800b2998e16.gif') repeat;
+  background-image: url('https://i.pinimg.com/originals/98/e4/d9/98e4d9062f971d5107975800b2998e16.gif');
   background-color: #000014;
+  background-repeat: no-repeat;
   background-size: cover;
-  animation: estrellasFondo 20s linear infinite;
+  background-attachment: fixed;
+  background-position: center center;
 }
-
 
     header {
       text-align: center;
@@ -148,21 +146,6 @@ body.fondo-poemas {
 .seccion.activa {
   display: block;
 }
-
-
-    .tarjeta {
-      background: rgba(30, 30, 30, 0.8);
-      padding: 20px;
-      margin: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 153, 204, 0.4);
-      transition: 0.6s ease;
-    }
-
-    .tarjeta:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
-    }
 
     h3 {
       color: #ffccff;
@@ -262,19 +245,6 @@ body {
   background-color: transparent !important;
 }
 
-/* Si tus tarjetas de amigos tienen fondo, que sea semitransparente */
-.tarjeta {
-  background-color: rgba(0, 0, 0, 0.6); /* Elegante y deja ver el gradiente */
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.tarjeta:hover {
-  transform: scale(1.03);
-}
-
 /* Animación suave del gradiente */
 @keyframes gradienteSuave {
   0% { background-position: 0% 50%; }
@@ -305,20 +275,6 @@ nav button:hover {
   transform: scale(1.05);
 }
 
-.tarjeta {
-  background-color: rgba(0, 0, 0, 0.6); /* Negro con 60% de opacidad */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px #ff00ff55;
-}
-
-
-
-.tarjeta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
-}
-
 h3 {
   color: #ffccff;
   text-shadow: 0 0 5px #ff99cc;
@@ -332,17 +288,6 @@ h3 {
   color: #ffd700;
   margin-bottom: 25px;
   text-align: center;
-}
-
-/* Tarjetas visuales */
-.tarjeta {
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid #d4af37;
-  border-radius: 20px;
-  padding: 30px;
-  margin: 40px auto;
-  max-width: 900px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
 }
 
 /* Contenedor individual */
@@ -442,6 +387,13 @@ body {
 
     /* === POEMAS CSS === */
 
+@media screen and (max-width: 600px) {
+  .poema.tarjeta {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
 .titulo-seccion {
   font-size: 2.2em;
   text-align: center;
@@ -496,12 +448,14 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 15px #ff4dd2;
   padding: 20px;
-  width: 250px;
-  height: auto;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
   color: white;
   text-align: left;
   transition: transform 0.3s ease;
 }
+
 
 .poema.tarjeta:hover {
   transform: scale(1.05);
@@ -516,7 +470,23 @@ body {
 .poema p {
   font-size: 15px;
   line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
+
+.poema {
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
   </style>
 </head>
 
@@ -694,27 +664,164 @@ body {
     <button onclick="filtrarPoemas('cifer')">🖤 Estilo Cifer</button>
   </div>
 
-  <div class="contenedor-poemas">
-    <div class="poema tarjeta morningstar">
-      <h3>Versos del Amanecer</h3>
-      <p>Un canto que florece entre el dolor y la tinta divina. Aquí va el poema completo, desplegado desde el principio.</p>
-    </div>
-    <div class="poema tarjeta morningstar">
-      <h3>Poema 2 Morningstar</h3>
-      <p>Contenido completo del poema 2 de la marca Morningstar.</p>
-    </div>
-    <div class="poema tarjeta morningstar">
-      <h3>Poema 3 Morningstar</h3>
-      <p>Contenido completo del poema 3 de la marca Morningstar.</p>
-    </div>
-    <div class="poema tarjeta morningstar">
-      <h3>Poema 4 Morningstar</h3>
-      <p>Contenido completo del poema 4 de la marca Morningstar.</p>
-    </div>
-    <div class="poema tarjeta morningstar">
-      <h3>Poema 5 Morningstar</h3>
-      <p>Contenido completo del poema 5 de la marca Morningstar.</p>
-    </div>
+<div class="contenedor-poemas">
+  <div class="poema tarjeta angelmj">
+  </div>
+  <div class="poema tarjeta shidou">
+  </div>
+  <div class="poema tarjeta cifer">
+  </div>
+</div> <!-- Cierra aquí .contenedor-poemas -->
+
+  <div class="poema tarjeta morningstar">
+    <h3>Sombras tras la Luz</h3>
+    <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+    El tiempo se ha ido y me ha dejado atrás,<br>
+    anhelando poder abrazarte una vez más,<br>
+    ha pasado mucho tiempo desde que te hablé,<br>
+    y me gustaría poder hacerlo otra vez.<br><br>
+
+    Día tras día, noche tras noche,<br>
+    le pido al Señor que no te abandone,<br>
+    Ya no soy yo quien vela tu destino,<br>
+    pero al menos el cielo cuida tu camino.<br><br>
+
+    Por favor, no me odies por no acercarme,<br>
+    pero con lo que tu hermana me hizo ya no puedo hablarte.<br>
+    No es culpa tuya, lo sé en el alma,<br>
+    pero mi sombra aún tiembla si tu luz me alcanza.
+    </p>
+  </div>
+
+  <div class="poema tarjeta morningstar">
+    <h3>Nunca Fui Suficiente</h3>
+    <p>𝐏𝐨𝐫 : ✒️ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+    Fui palabras, fui risas, fui tiempo,<br>
+    fui el que esperó bajo la lluvia en silencio,<br>
+    fui quien creyó que con paciencia y ternura<br>
+    se ganan los corazones… qué absurdo argumento.<br><br>
+
+    Perdí horas aprendiendo tus caminos,<br>
+    dibujando futuros que nunca llegaron,<br>
+    y mientras yo soñaba con verte conmigo,<br>
+    otro, en un instante, te tuvo en sus manos.<br><br>
+
+    ¿De qué sirvió mi esfuerzo callado?<br>
+    ¿De qué sirvió ser quien nunca se va?<br>
+    Si al final, no importa cuánto hayas dado,<br>
+    siempre llega alguien y ocupa tu lugar.<br><br>
+
+    Me duele pensar que no fui bastante,<br>
+    que todo lo mío jamás te alcanzó,<br>
+    porque mientras yo te buscaba constante,<br>
+    otro vino, y sin lucha, te conquistó.<br><br>
+
+    Tal vez amar es solo un juego perdido,<br>
+    tal vez el destino no quiere que gane,<br>
+    pero, ¿cómo seguir creyendo en lo bonito,<br>
+    cuando el dolor es lo único que no me abandona?<br><br>
+
+    Así que aquí estoy, cansado del intento,<br>
+    de ser siempre el que queda atrás,<br>
+    y si el amor es un castigo eterno…<br>
+    que no me vuelva a encontrar jamás.
+    </p>
+  </div>
+
+  <div class="poema tarjeta morningstar">
+    <h3>Prisionero de un Amor Roto</h3>
+    <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+    No sé por qué aún te pienso,<br>
+    cuando fuiste quien soltó mi mano,<br>
+    cuando mi amor era un fuego sincero<br>
+    y el tuyo… cenizas en otro verano.<br><br>
+
+    Debería odiarte, arrancarte de mí,<br>
+    pero te quedaste en cada herida,<br>
+    en cada promesa que hicimos juntos,<br>
+    en cada parte que ya no se olvida.<br><br>
+
+    Duele saber que otros labios te llaman,<br>
+    que otra piel conoce tu calor,<br>
+    y yo aquí, como un necio cualquiera,<br>
+    esperando migajas de tu amor.<br><br>
+
+    ¿Por qué no puedo dejarte ir,<br>
+    si fuiste tú quien rompió lo nuestro?<br>
+    ¿Por qué mis noches te siguen buscando,<br>
+    aunque sé que ya no hay regreso?<br><br>
+
+    A veces, me culpo por sentir así,<br>
+    por no poder apagar este fuego,<br>
+    pero amar a quien ya no me ama…<br>
+    es el castigo que aún no supero.
+    </p>
+  </div>
+
+  <div class="poema tarjeta morningstar">
+    <h3>El Eco de un 'Papá'</h3>
+    <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+    Te busqué en la brisa de cada recuerdo,<br>
+    en los días que el tiempo no quiso borrar,<br>
+    pero ya no estás… y en tu mirada ausente,<br>
+    dejaste un vacío que no sé llenar.<br><br>
+
+    Fui abrigo cuando el frío quiso abrazarte,<br>
+    fui risa en los días que no querías llorar,<br>
+    pero ahora soy nada… un extraño en tu mundo,<br>
+    un nombre que duele si vuelves a recordar.<br><br>
+
+    No sé si me odias, no sé si me extrañas,<br>
+    solo sé que tu ausencia me enseña a perder,<br>
+    porque hay lazos que el alma nunca abandona,<br>
+    aunque el cuerpo no vuelva a aparecer.<br><br>
+
+    Te llamé "hija" en mis noches más frías,<br>
+    fuiste luz cuando todo se empezó a nublar,<br>
+    y hoy cargo un silencio que pesa en el pecho,<br>
+    un "papá" que el tiempo no quiere soltar.<br><br>
+
+    Si pudiera hablarte, si pudiera abrazarte,<br>
+    decirte que nunca te quise dejar,<br>
+    pero la vida es cruel cuando rompe los lazos,<br>
+    y a veces, amar no es suficiente para estar.
+    </p>
+  </div>
+
+  <div class="poema tarjeta morningstar">
+    <h3>Cicatrices Invisibles</h3>
+    <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+    No me hables de amor, ya no creo,<br>
+    tantas mentiras vestidas de deseo.<br>
+    Promesas vacías que el viento arrastró,<br>
+    y un corazón roto que nadie arregló.<br><br>
+
+    Te di mis besos, mi tiempo, mi calma,<br>
+    tú solo jugaste con todo mi alma.<br>
+    Cada "te quiero" hoy pesa en el pecho,<br>
+    y el recuerdo duele aunque no lo aprovecho.<br><br>
+
+    Quisiera olvidarte como tú me olvidaste,<br>
+    sentir indiferencia donde tú me marcaste.<br>
+    Cambiar este cuento, borrar el final,<br>
+    donde yo pierdo y tú te vas tan normal.<br><br>
+
+    Los tragos me ven ahogar la memoria,<br>
+    de un "para siempre" que murió en la historia.<br>
+    ¿Dónde quedó lo que juraste sentir?<br>
+    Se fue contigo y me dejó a morir.<br><br>
+
+    A veces le pregunto a Dios en silencio<br>
+    si el amor es real o solo un mal sueño.<br>
+    Porque si fui bueno, ¿por qué me engañaste?<br>
+    Y cada sonrisa, ¿por qué la usaste?<br><br>
+
+    Ya no hay arcoíris tras tanta tormenta,<br>
+    solo un vacío que el alma revienta.<br>
+    Así que no, no me hables de amor,<br>
+    me cansé de promesas sin valor. </p>
+  </div>
+</div>
 
     <div class="poema tarjeta angelmj">
       <h3>El Chico de las Poesías</h3>
@@ -722,19 +829,709 @@ body {
     </div>
     <!-- Repetir para los otros 4 de AngelMJ -->
 
-    <div class="poema tarjeta shidou">
-      <h3>Proyección Carmesí</h3>
-      <p>Versos con filo, velocidad y deseo ritual. Aquí va el poema completo, desplegado desde el principio.</p>
-    </div>
-    <!-- Repetir para los otros 4 de Shidou Miguel -->
+<section id="shidou"class="poem-section hidden">
+<div class="poema tarjeta shidou">
+    <h2 class="poem-title">💉 “Amor con filo de navaja” 💋</h2>
+    <p class="poem-author">𝐏𝐨𝐫 : ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</p>
+    <p class="poem-text">
+      Me fascina tu risa cuando nadie más ríe,<br>
+      esa dulzura con perfume a amenaza,<br>
+      cuando el “te amo” no suena a ternura,<br>
+      sino a pacto de sangre y a bala en la casa.<br><br>
 
-    <div class="poema tarjeta cifer">
-      <h3>Silencio Hueco</h3>
-      <p>Donde Ulquiorra sangra palabras desde el fondo de mi alma. Aquí va el poema completo, desplegado desde el principio.</p>
-    </div>
-    <!-- Repetir para los otros 4 de Cifer Miguel -->
+      No me asustan tus celos ni tus ojos rojos,<br>
+      si tiemblas, si lloras, si gritas mi nombre,<br>
+      me prendes con furia, me tomas, me rompes,<br>
+      ¡y en cada desborde más tuyo me siento!<br><br>
+
+      Tus abrazos no son abrigo, son jaulas,<br>
+      y aún así, juro, no quiero escaparme.<br>
+      Que me encierres, que me claves los dientes,<br>
+      que jures matarme si dejo de amarte...<br><br>
+
+      ¡Ay, Yandere mía, flor de las cuchillas!<br>
+      Dama de espinas que sangra por mí,<br>
+      de tu locura no quiero remedio,<br>
+      si ser tuyo es morir... pues muero feliz.<br><br>
+
+      Quiero que llores de amor desbordada,<br>
+      que tu pasión roce el crimen, lo enfermo,<br>
+      que me cuides el alma con filo y con fuego,<br>
+      y me hagas el amor… con los celos ardiendo.<br><br>
+
+      ¿Quién dijo que el amor es tranquilo?<br>
+      Yo quiero volcanes, puñales y besos,<br>
+      que el “te quiero” se diga temblando,<br>
+      que si alguien me mira… le claves los dedos.<br><br>
+
+      Eres mi musa, mi cárcel, mi todo,<br>
+      mi dulce asesina, mi diosa fatal,<br>
+      y en este poema escrito con sangre,<br>
+      te juro: ¡ser tuyo no se siente tan mal!</p>
   </div>
-</section>
+
+<div class="poema tarjeta shidou">
+    <h2 class="poem-title">“Las Flores del Placer Celestial”</h2>
+    <p class="poem-author">𝐏𝐨𝐫 : ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</p>
+    <p class="poem-text">
+      Me encantan las mujeres...<br>
+      con el alma desatada y el cuerpo en revolución,<br>
+      con esa curva perfecta donde inicia mi perdición,<br>
+      y el aroma de su piel: un conjuro, una oración.<br><br>
+
+      Su cabello, cascada de luna,<br>
+      que cae rebelde por sus hombros de seda,<br>
+      donde mi mano sueña quedarse,<br>
+      donde mi fiebre se queda.<br><br>
+
+      Me encantan sus labios —¡malditos labios!—<br>
+      tan suaves que invocan ternura,<br>
+      tan rojos que juran pecado,<br>
+      tan dulces que matan con dulzura.<br><br>
+
+      Esa mirada... oh Dios, esa mirada...<br>
+      entre inocente y criminal,<br>
+      que me arranca la cordura<br>
+      y me hace poeta carnal.<br><br>
+
+      Pero no es solo la carne lo que amo,<br>
+      es la forma en que ríen,<br>
+      la fuerza con que luchan,<br>
+      la fragilidad con que sienten y aún así siguen.<br><br>
+
+      Adoro sus pasos seguros,<br>
+      el vaivén de sus caderas que enciende galaxias,<br>
+      la voz que murmura un “te amo”<br>
+      como si el universo se inclinara ante su gracia.<br><br>
+
+      Me encantan las mujeres...<br>
+      y lo digo con todo el deseo y toda el alma,<br>
+      con fuego que lame sin quemar,<br>
+      con amor que toca sin robar la calma.<br><br>
+
+      Porque su vientre es altar,<br>
+      y su cuello, un poema sin final,<br>
+      porque besar su espalda es orar,<br>
+      y rozar su cintura es arte celestial.<br><br>
+
+      Las amo completas,<br>
+      con sus demonios y sus sueños,<br>
+      con sus días de furia y sus noches de luna,<br>
+      con sus lágrimas, sus risas y sus pequeños empeños.<br><br>
+
+      Me encantan... ¡las quiero todas!<br>
+      altas, bajitas, delgadas, curvilíneas,<br>
+      con su alma de tormenta y su cuerpo de soneto,<br>
+      con su libertad sagrada y su corazón completo.<br><br>
+
+      Me encanta cuando caminan como reinas,<br>
+      cuando saben lo que valen,<br>
+      cuando no se rinden,<br>
+      cuando se dan enteras, y aun así… no se pierden.<br><br>
+
+      Amo la mujer que me enloquece con solo una mirada,<br>
+      la que me arruina el pensamiento con una palabra,<br>
+      la que me salva y me condena,<br>
+      la que es hogar y guerra santa.<br><br>
+
+      Porque estar con una mujer no es solo pasión,<br>
+      es entrega, es fuego, es redención,<br>
+      es arte, es deseo, es revolución,<br>
+      es mirar el cielo… y tenerlo entre las manos.<br><br>
+
+      Me encantan las mujeres.<br>
+      ¡Me encantan hasta el delirio!<br>
+      Y si amar sus cuerpos es locura,<br>
+      entonces que me encierren entre sus suspiros.<br><br>
+
+      Porque nací pa’ venerarlas,<br>
+      pa’ escribirlas, pa’ soñarlas,<br>
+      pa’ perderme en sus miradas<br>
+      y arder suave entre sus faldas.<br><br>
+
+      Y si he de caer rendido,<br>
+      que no sea por el olvido,<br>
+      sino en labios bien prohibidos<br>
+      y en sus brazos… bendecido.<br><br>
+
+      Que mi piel grite sus nombres,<br>
+      que mi tumba huela a flores,<br>
+      y mi alma —libre al fin—<br>
+      se les rinda sin temores.
+    </p>
+  </div>
+  </section>
+
+<div class="poema tarjeta shidou">
+  <h2 class="poem-title">Dulce Crisis Emocional</h2>
+  <p class="poem-author">𝐏𝐨𝐫 : ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</p>
+  <p class="poem-text">
+    Hay algo exquisito en perder la cordura,<br>
+    una dulzura amarga, una fiebre que dura.<br>
+    Me hundo en lo roto con clase letal,<br>
+    como un príncipe oscuro en su ritual.<br><br>
+
+    Las lágrimas bajan, pero me saben a vino,<br>
+    brindando por cada traición del destino.<br>
+    Mi pecho es un templo con grietas doradas,<br>
+    y en cada fractura… las llamas sagradas.<br><br>
+
+    El dolor me desnuda sin pedir permiso,<br>
+    y yo me dejo, con placer indeciso.<br>
+    Porque hay placer en lo que arde y no mata,<br>
+    una pasión salvaje que todo lo desata.<br><br>
+
+    No pido consuelo, no busco piedad,<br>
+    prefiero la noche, la sombra, la tempestad.<br>
+    Soy adicto a la pena que ruge en mi pecho,<br>
+    me arrastra, me azota… y yo le echo el lecho.<br><br>
+
+    ¡Ah, qué delicia caer desde lo alto!<br>
+    Sentir que me rompo… y aún así salto.<br>
+    Me beso con monstruos, los invito a cenar,<br>
+    y cuando me muerden… los empiezo a amar.<br><br>
+
+    ¿Quién necesita paz cuando la tormenta gime?<br>
+    ¿Quién busca luz si la oscuridad redime?<br>
+    Yo bailo con caos en la punta de un filo,<br>
+    y sonrío sangrando… eso es lo mío.<br><br>
+
+    Me excita esta guerra que tengo conmigo,<br>
+    el arte de llorar mientras me bendigo.<br>
+    Porque ser fuerte es muy aburrido,<br>
+    prefiero ser hermoso… pero malherido.<br><br>
+
+    Las voces que susurran son mi orquesta,<br>
+    y en su canto turbio, hallé mi fiesta.<br>
+    El abismo me guiña, me quiere seducir,<br>
+    y yo le coqueteo… lo dejo venir.<br><br>
+
+    No soy víctima, soy el veneno y el trago,<br>
+    el que se quema y aún pide más fuego.<br>
+    No me rescates, no traigas tu fe,<br>
+    mi infierno tiene clase y huele a té.<br><br>
+
+    El corazón late, pero como un tambor,<br>
+    marcando el ritmo de mi propio dolor.<br>
+    Y cada espasmo es un gozo divino,<br>
+    una sinfonía de sangre y destino.<br><br>
+
+    Lloro, sí, pero con estilo de dios,<br>
+    mis lágrimas valen más que tu voz.<br>
+    Porque hay gloria en esta condena,<br>
+    y mi locura… ya no tiene cadena.<br><br>
+
+    Estoy roto, pero con sello de arte,<br>
+    mi sufrimiento tiene un toque elegante.<br>
+    Y si esta crisis me besa otra vez,<br>
+    le devuelvo el beso… con altivez.<br><br>
+
+    No quiero curarme, me gusta la herida,<br>
+    es mi musa, mi droga, mi vida.<br>
+    Y si mañana amanezco sin razón,<br>
+    al menos morí con pura pasión.<br><br>
+
+    Así que brindemos por esta ruina,<br>
+    por este éxtasis que me domina.<br>
+    La dulce crisis me vuelve a llamar…<br>
+    y yo corro a sus brazos, listo para pecar.
+  </p>
+</div>
+
+<div class="poema tarjeta shidou">
+  <h2 class="poem-title">"¿Te molesta si duro mucho?"</h2>
+  <p class="poem-author">𝐏𝐨𝐫 : ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</p>
+  <p class="poem-text">
+    Me tengo que correr,<br>
+    pero el tiempo se hace lento<br>
+    cuando gimes entre versos<br>
+    y me miras como un cuento.<br><br>
+
+    ¿Te molesta si duro mucho?<br>
+    Es que tu piel me retrasa,<br>
+    y entre cada contracción tuya<br>
+    yo escribo una nueva estrofa en tu casa.<br><br>
+
+    Tus piernas son mi pentagrama,<br>
+    y yo soy nota enloquecida,<br>
+    marcando el ritmo con mi lengua<br>
+    en cada melodía encendida.<br><br>
+
+    No quiero irme tan pronto,<br>
+    cuando tus uñas aún me rezan,<br>
+    cuando tu espalda se curva<br>
+    y tus muslos me aprietan.<br><br>
+
+    ¿Te molesta si me pierdo<br>
+    en la selva de tu ombligo?<br>
+    Hay caminos que dan vida<br>
+    cuando se caminan contigo.<br><br>
+
+    Voy despacio, casi cruel,<br>
+    castigando con caricias,<br>
+    tú suplicas con los ojos<br>
+    y yo respondo con delicias.<br><br>
+
+    No es solo carne y locura,<br>
+    es pasión con poesía,<br>
+    es un arte de dos cuerpos<br>
+    que se besan con herejía.<br><br>
+
+    No pares de decir mi nombre,<br>
+    aunque el mundo esté durmiendo,<br>
+    yo quiero que la luna escuche<br>
+    lo que tú estás conteniendo.<br><br>
+
+    Te como los pensamientos,<br>
+    te bebo los gemidos,<br>
+    hago del sudor tu tinta<br>
+    y del roce mis latidos.<br><br>
+
+    Tu aliento se me derrama<br>
+    como vino entre los besos,<br>
+    y yo lo lamo sin tregua<br>
+    como beato en sus excesos.<br><br>
+
+    ¿Te molesta si no acabo?<br>
+    Es que aún me falta orar<br>
+    sobre tu monte sagrado<br>
+    con mi lengua por altar.<br><br>
+
+    El temblor de tu cadera<br>
+    me escribe letanías,<br>
+    y el roce lento que te entrego<br>
+    te convierte en profecía.<br><br>
+
+    Amo cómo te me ofreces<br>
+    como fruta en madrugada,<br>
+    cómo bajas tus defensas<br>
+    cuando te invado sin nada.<br><br>
+
+    Me pierdo en tus suspiros,<br>
+    me oriento por tu voz,<br>
+    cada jadeo tuyo es brújula<br>
+    y mi boca es el adiós.<br><br>
+
+    Adiós al juicio, al control,<br>
+    a la razón y su discurso,<br>
+    yo solo soy un hechizo<br>
+    entre tu pecho y su pulso.<br><br>
+
+    ¿Te molesta si te adoro<br>
+    como si fueras pecado?<br>
+    Es que me tienes rezando<br>
+    con mi alma y cuerpo atado.<br><br>
+
+    Tus pechos son mis campanas<br>
+    y tus piernas, mis cadenas,<br>
+    y yo no quiero escapar<br>
+    de esta cárcel tan amena.<br><br>
+
+    Hazme reo de tu humedad,<br>
+    del incendio de tus muslos,<br>
+    que prefiero arder mil veces<br>
+    antes que acabar con repulsos.<br><br>
+
+    Dices que te queme lento,<br>
+    que lo tuyo no es la prisa,<br>
+    así que te amaré en capítulos,<br>
+    como historia sin ceniza.<br><br>
+
+    Te azotaré con palabras,<br>
+    te morderé los delirios,<br>
+    haré de ti mi lienzo<br>
+    y de mi lengua tus delirios.<br><br>
+
+    ¿Te molesta si no paro<br>
+    aunque supliques descanso?<br>
+    Es que aún no he recorrido<br>
+    la curva que hay en tu llanto.<br><br>
+
+    Ese gemido al oído<br>
+    es un puente hacia lo eterno,<br>
+    y yo quiero cruzarlo<br>
+    antes de decir “me vengo”.<br><br>
+
+    Pero aún no… aún no,<br>
+    aún te falta un universo,<br>
+    que explote dentro de ti<br>
+    mi promesa y cada verso.<br><br>
+
+    Me tengo que correr,<br>
+    sí… lo admito entre tus labios,<br>
+    pero hay algo en tu sudor<br>
+    que me obliga a quedarme sabio.<br><br>
+
+    Tu cintura me bendice<br>
+    como diosa entre sus velos,<br>
+    y yo le rezo con mi cuerpo<br>
+    bajo sábanas y cielos.<br><br>
+
+    ¿Te molesta si no acabo<br>
+    hasta ver tu alma rota<br>
+    gritando mi nombre al viento<br>
+    con la voz deshecha y rota?<br><br>
+
+    No es sexo lo que te doy,<br>
+    es un poema sin censura,<br>
+    es un trance prolongado<br>
+    de deseo y de locura.<br><br>
+
+    Dame más de tu sudor,<br>
+    de tus piernas temblorosas,<br>
+    que yo vine a hacer historia<br>
+    entre caricias peligrosas.<br><br>
+
+    Me tengo que correr,<br>
+    pero tu piel no me deja,<br>
+    y yo soy esclavo de un ritmo<br>
+    que solo tu cuerpo maneja.<br><br>
+
+    Amo el modo en que me tomas,<br>
+    como diosa posesiva,<br>
+    y cómo al borde del grito<br>
+    aún me suplicas: “¡sigue, vida!”<br><br>
+
+    Y cuando llegue el momento,<br>
+    cuando ya no puedas más,<br>
+    cuando tus uñas marquen mi espalda<br>
+    como quien deja su nombre en la historia,<br>
+    entonces sí,<br>
+    me correré…<br>
+    pero no sin antes preguntarte una última vez:<br><br>
+
+    <em>¿Te molesta si duro mucho?</em>
+  </p>
+</div>
+
+<div class="poema tarjeta shidou">
+  <h2 class="poem-title">"Entre vueltas y Gemidos."</h2>
+  <p class="poem-author">𝐏𝐨𝐫 : ⛩️🌸 𝓢𝓱𝓲𝓭𝓸𝓾 彡 𝓜𝓲𝓰𝓾𝓮𝓵 ✦「詩の剣士」🌸⛩️</p>
+  <p class="poem-text">
+    Si vas a estar dando vueltas en mi cabeza...<br>
+    ¡al menos vístete! Con lencería traviesa,<br>
+    esa roja que me enloquece, que empieza<br>
+    guerras de lenguas... y ninguna reza.<br><br>
+
+    Ya no estamos pa’ dejarnos con las ganas,<br>
+    ni pa’ mensajes tímidos en las madrugadas,<br>
+    quiero tus uñas firmes sobre mi espalda<br>
+    y tus gemidos haciendo eco en mi alma.<br><br>
+
+    ¿Sabes qué me caería bien ahorita?<br>
+    Tú encima, con esa cara bendita<br>
+    y ese vaivén que al pecado incita,<br>
+    suda mi nombre, repite la cita.<br><br>
+
+    Desnúdame el juicio, róbame el aire,<br>
+    muérdeme el cuello, sácame del baile,<br>
+    haz que la cama grite sin nadie,<br>
+    y deja que el mundo se vuelva un detalle.<br><br>
+
+    Tu piel con la mía, fricción celestial,<br>
+    mi lengua viajando tu ruta carnal,<br>
+    tus piernas abiertas: mi puerto final,<br>
+    tu cuerpo y el mío: un gol sexual.<br><br>
+
+    La noche no vino a dormir, sino a arder,<br>
+    y tú viniste a mojar, no a entender,<br>
+    déjame perderme en tu forma de morder,<br>
+    que el infierno empieza al verte ceder.<br><br>
+
+    Tus besos no son dulces, son dinamita,<br>
+    cada roce tuyo una guerra bendita,<br>
+    haz que me corra por toda la pista,<br>
+    sin reglas, sin pausas, sin lista.<br><br>
+
+    Y si mañana el mundo se acaba,<br>
+    que sea contigo desnuda en la cama,<br>
+    jugando a los roles sin drama,<br>
+    y gimiendo al compás de esta llama.<br><br>
+
+    Así que ven... y deja de hablar,<br>
+    la ropa estorba, hay que actuar,<br>
+    esta noche no quiero pensar,<br>
+    solo oírte gemir... y reventar.
+  </p>
+</div>
+
+    <!-- Poemas Estilo Shidou -->
+
+<div class="poema tarjeta cifer">
+  <h3>❝Podré pelear con mil hombres…❞</h3>
+  <p><em>✨ Por: ⛓️🖤 𝓒𝓲𝓯𝓮𝓻 𝓜𝓲𝓰𝓾𝓮𝓵 ☯ 「虚ろなる心の詩人」🖤</em></p>
+  <p>
+    Podré pelear con mil hombres<br>
+    que estén enamorados de ti,<br>
+    convertir sus esperanzas en ruinas,<br>
+    y sus versos en cenizas frente a mí.<br><br>
+
+    Podré romper cada carta escrita,<br>
+    borrar los nombres que te adoran,<br>
+    hundir sus promesas en ácido<br>
+    y silenciar las flores que imploran.<br><br>
+
+    Pero no puedo...<br>
+    no puedo con uno.<br>
+    No puedo con el que tú amas.<br><br>
+
+    Porque ese hombre no es un rival,<br>
+    es tu refugio, tu certeza, tu raíz,<br>
+    y yo... solo soy el eco<br>
+    que aún no decides olvidar.<br><br>
+
+    Contra mil, soy guerra.<br>
+    Contra uno, soy derrota anticipada.<br>
+    Porque si lo amas a él...<br>
+    ya no queda nada.<br><br>
+
+    No hay espada que corte su nombre,<br>
+    no hay argumento que anule su voz,<br>
+    porque él vive en el templo<br>
+    donde antes reinaba yo.<br><br>
+
+    Lo irónico es que lo acepto,<br>
+    sin escándalos, sin lágrimas ni gritos.<br>
+    El mismo que partía mundos por ti,<br>
+    ahora se queda quieto... y maldito.<br><br>
+
+    Y no por cobardía...<br>
+    Sino porque cuando amas de verdad,<br>
+    no luchas por obligar un corazón,<br>
+    luchas por respetar su voluntad.<br><br>
+
+    Así que deja que vengan mil,<br>
+    que todos sangren por querer tocarte.<br>
+    Yo estaré ahí, de pie, con la furia fría...<br>
+    Pero si lo amas a él,<br>
+    entonces ya perdí antes de empezar a amarte.<br><br>
+
+    Y por más que me duela en el pecho,<br>
+    más que todo lo que he enfrentado,<br>
+    no puedo arrastrar un alma que eligió<br>
+    otro abrigo, otro cielo, otro lado.<br><br>
+
+    Podré pelear con mil hombres<br>
+    que quieran adueñarse de tu piel…<br>
+    Pero no puedo contra el amor que tú sientes,<br>
+    porque el amor verdadero…<br>
+    no se vence con poder.
+  </p>
+</div>
+
+<div class="poema tarjeta cifer">
+  <h3>❝Elogios Póstumos❞</h3>
+  <p><em>✨ Por: ⛓️🖤 𝓒𝓲𝓯𝓮𝓻 𝓜𝓲𝓰𝓾𝓮𝓵 ☯ 「虚ろなる心の詩人」🖤⛓️</em></p>
+  <p>
+    “La gente tiene cosas hermosas que decir sobre ti...<br>
+    solo que están esperando a que ya no estés vivo.”<br><br>
+
+    No sabías que me querías,<br>
+    hasta que la tierra pidió mi carne.<br>
+    Ahora lloras con palabras que jamás usaste<br>
+    cuando el silencio me pesaba más que el alma.<br><br>
+
+    Dicen que era luz,<br>
+    pero nunca encendieron una vela cuando oscurecí.<br>
+    Dicen que era fuerza,<br>
+    aunque temblaban al sostener mis ruinas.<br><br>
+
+    Tienen discursos floridos para el ataúd,<br>
+    pero ni un susurro firme cuando sangraba en vida.<br>
+    Qué irónico:<br>
+    el aplauso llega cuando ya no puedo oírlo.<br><br>
+
+    Me imaginan eterno en palabras<br>
+    que jamás cruzaron sus labios cuando respiraba.<br>
+    Y en cada lágrima fingida,<br>
+    hay un poco del amor que nunca dieron.<br><br>
+
+    ¿Dónde estaban<br>
+    cuando la muerte dormía conmigo en cada pensamiento?<br>
+    ¿Dónde estaban<br>
+    cuando mi voz fue un eco perdido en la indiferencia?<br><br>
+
+    La verdad es simple,<br>
+    y duele como todo lo que se ignora:<br>
+    la gente no te valora,<br>
+    solo te extraña cuando ya no puedes responderles.<br><br>
+
+    Así funciona el teatro del duelo:<br>
+    lloran la ausencia, no la esencia.<br>
+    Honran la lápida,<br>
+    no al hombre que gritaba por dentro.<br><br>
+
+    No necesito rosas cuando no pueda tocarlas,<br>
+    ni cartas si ya no puedo leerlas.<br>
+    No necesito ser querido después de ser cenizas,<br>
+    ni ser recordado por los que me olvidaron vivo.<br><br>
+
+    Llámame cruel,<br>
+    pero ya he vivido mi entierro en vida más de una vez.<br>
+    Y en cada uno,<br>
+    la hipocresía vestía de luto.<br><br>
+
+    Así que no me den discursos bellos,<br>
+    denme silencio cuando no me hablen con verdad.<br>
+    Denme distancia, si eso es lo que pueden ofrecer.<br>
+    Pero no se atrevan a llamarme “inolvidable”<br>
+    cuando ya me han olvidado antes.<br><br>
+
+    Porque sí…<br>
+    la gente tiene cosas hermosas que decir sobre ti…<br>
+    pero están esperando<br>
+    a que no estés vivo para no sentirse incómodos al decirlas.
+  </p>
+</div>
+
+<div class="poema tarjeta cifer">
+  <h3>❝No Romanticen❞</h3>
+  <p><em>✨ Por: ⛓️🖤 𝓒𝓲𝓯𝓮𝓻 𝓜𝓲𝓰𝓾𝓮𝓵 ☯ 「虚ろなる心の詩人」🖤</em></p>
+  <p><em>"Porque la herida no se vuelve bella solo porque sangra lento."</em></p>
+  <p>
+    No romanticen el "te cela porque te ama",<br>
+    es control envuelto en caricia falsa.<br>
+    No es amor, es paranoia enviciada<br>
+    de alguien que teme que lo dejen… y con razón.<br><br>
+
+    No romanticen el "sin ti me muero",<br>
+    ¿qué clase de amor requiere amenaza?<br>
+    Eso es chantaje emocional con disfraz de poema,<br>
+    es veneno que se sirve con copa de vino.<br><br>
+
+    No romanticen los gritos y golpes,<br>
+    las reconciliaciones con sabor a trauma.<br>
+    No hay redención en el puño que tiembla,<br>
+    ni consuelo en el beso que pide perdón entre excusas rotas.<br><br>
+
+    No romanticen la obsesión disfrazada de devoción,<br>
+    ni el seguimiento constante como “preocupación”.<br>
+    Eso no es amar, eso es invadir,<br>
+    es convertir el afecto en celda y vigía.<br><br>
+
+    No romanticen la idea de ser "su todo",<br>
+    porque cuando te lo quitan, no te queda nada.<br>
+    Ni el sacrificio extremo por alguien que no mueve un dedo,<br>
+    ni esas historias donde el amor siempre duele <em>porque así es más real</em>.<br>
+    Qué patética idea.<br><br>
+
+    No romanticen las historias donde el dolor valida el cariño,<br>
+    donde llorar juntos se vuelve un ritual romántico,<br>
+    donde más vale la intensidad que la paz.<br>
+    <em>Eso no es amor, es adicción a lo que arde.</em><br><br>
+
+    No romanticen el "me quedo por ti aunque me rompas",<br>
+    ni el "yo aguanto porque sé que cambiarás".<br>
+    El infierno también promete el paraíso,<br>
+    mientras te calcina por completo.<br><br>
+
+    ¿Les gusta sufrir?<br>
+    Perfecto.<br>
+    Pero no lo pinten de lírico,<br>
+    ni le recen como si fuera amor verdadero.<br>
+    El masoquismo afectivo no es poético.<br>
+    Solo patético.<br><br>
+
+    No, no es romántico arrastrarse.<br>
+    No, no es romántico mendigar atención.<br>
+    No, no es romántico quedarse donde el alma se oxida<br>
+    por el miedo a dormir solo.<br><br>
+
+    No romanticen lo que jamás debió doler.<br>
+    Porque el amor no necesita tragedias para ser eterno.<br>
+    Solo quienes jamás lo han tenido…<br>
+    necesitan que les duela para sentirse vivos.
+  </p>
+</div>
+
+<div class="poema tarjeta cifer">
+  <h3>“Aprendí a besar… para ser abandonado mejor.”</h3>
+  <p>✨ 𝐏𝐨𝐫 : ⛓️🖤 𝓒𝓲𝓯𝓮𝓻 𝓜𝓲𝓰𝓾𝓮𝓵 ☯ 「虚ろなる心の詩人」🖤⛓️</p>
+  <p>
+    El eco de su beso aún transita<br>
+    por los callejones ruinosos de mi carne,<br>
+    y yo, triste parodia de hombre,<br>
+    recojo los huesos del deseo<br>
+    como un perro que olvida que es fiera.<br><br>
+
+    No la extraño a ella —no—<br>
+    extraño la forma en que me mentía,<br>
+    con labios que sabían a perdón anticipado<br>
+    y caricias que decían:<br>
+    <em>“Eres suficiente… hasta que deje de serlo.”</em><br><br>
+
+    ¿Y yo?<br>
+    Yo no fui más que un lienzo barato<br>
+    donde su sombra practicó amor.<br>
+    Aprendí a besar para ella,<br>
+    a respirar al ritmo de su aliento,<br>
+    como si mis pulmones dependieran<br>
+    de su presencia inestable.<br><br>
+
+    Ahora, ni siquiera me esfuerzo por odiarla.<br>
+    <em>Me da flojera.</em><br>
+    Odiar requiere fuerza,<br>
+    y yo la perdí buscando señales<br>
+    en una pantalla <em>vacía</em>.<br><br>
+
+    La parte de mí que aún la extraña…<br>
+    <strong>que se pudra.</strong><br>
+    Que se consuma en su propia nostalgia<br>
+    como un cigarro que nadie quiso fumar.<br>
+    Yo ya no estoy aquí para consolarme.<br>
+    Solo queda este cascarón poético,<br>
+    este reflejo con ojeras<br>
+    que escribe sin esperar ser leído.<br><br>
+
+    Así se desangra lo que una vez amó.<br>
+    Sin escándalos.<br>
+    Sin lágrimas.<br>
+    Solo con una apatía tan honda,<br>
+    <em>que ni la muerte se atrevería a habitarme.</em>
+  </p>
+</div>
+
+<div class="poema tarjeta cifer">
+  <h3>“El bastón que ya no sirve”</h3>
+  <p>✨ 𝐏𝐨𝐫 : ⛓️🖤 𝓒𝓲𝓯𝓮𝓻 𝓜𝓲𝓰𝓾𝓮𝓵 ☯ 「虚ろなる心の詩人」🖤⛓️</p>
+  <p>
+    <em>No vine a guiar ciegos, vine a observar cómo tropiezan cuando creen ver claro.</em><br><br>
+
+    Lo primero que hace el ciego al recuperar la vista,<br>
+    es botar el bastón que lo guió en toda la vida.<br>
+    No le da gracias, no lo limpia, ni lo cuelga en su altar…<br>
+    Lo lanza, como quien lanza a quien ya no va a necesitar.<br><br>
+
+    Y así son muchos.<br>
+    Solo te abrazan cuando caminan a oscuras.<br>
+    Pero si un día la luz aparece,<br>
+    te cambian por una sombra más alta, más turbia, más “bonita”.<br><br>
+
+    Te llaman "escalón", nunca "compañía",<br>
+    te usan como puente, como muleta, como anestesia.<br>
+    Y cuando ya no tiemblan las piernas…<br>
+    te dejan tirado como si fueses piedra.<br><br>
+
+    Qué triste es ser <em>indispensable</em> solo mientras ellos son incapaces.<br>
+    Qué irónico que el bastón sabía guiar…<br>
+    pero nunca aprenderá a odiar como el que aprendió a ver.<br><br>
+
+    Te cambian por espejos rotos,<br>
+    por egos nuevos, por amistades de humo.<br>
+    Pero recuerda esto:<br>
+    No hay peor ingrato… que el que se salva y olvida el naufragio.<br><br>
+
+    Que se atraganten con su luz artificial.<br>
+    Al final, tú fuiste su faro,<br>
+    aunque ahora seas un trapo en su caja de cosas olvidadas.<br><br>
+
+    Y aún así, no guardes rencor,<br>
+    solo afila el alma y graba esta frase en tus huesos:<br><br>
+
+    <strong>“Lo primero que hace el ciego al recuperar la vista,<br>
+    es botar el bastón que lo guió en toda la vida.”</strong>
+  </p>
+</div>
 
  <!-- === SCRIPTS Y FUNCIONES === -->
   <script>
@@ -796,11 +1593,18 @@ function mostrar(id) {
 
     /* LÓGICA DE POEMAS */
     
-    function filtrarPoemas(marca) {
+   function filtrarPoemas(marca) {
+  const botones = document.querySelectorAll('.filtros-marcas button');
+  botones.forEach(b => b.classList.remove('activo'));
+
   const poemas = document.querySelectorAll('.poema');
   poemas.forEach(poema => {
     poema.style.display = (marca === 'todos' || poema.classList.contains(marca)) ? 'block' : 'none';
   });
+
+  // Activar botón actual
+  const botonActivo = document.querySelector(`.filtros-marcas button[onclick="filtrarPoemas('${marca}')"]`);
+  if (botonActivo) botonActivo.classList.add('activo');
 }
 
 /* FONDO DE LA SECCIÓN PARA POEMAS */
@@ -820,8 +1624,6 @@ function mostrarSeccion(id) {
     document.body.classList.remove('fondo-poemas');
   }
 }
-
-
 
 
   </script>
