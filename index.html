@@ -81,16 +81,28 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* === ESTILOS GENERALES === */
     body {
-      color: white;
-      font-family: 'Georgia', serif;
-      margin: 0;
-      animation: fondoCambiando 30s infinite;
-      background: linear-gradient(-45deg, #330033, #00334d, #262626, #4d0000, #710193, #2C041C, #051094, #1520a6);
-      background-size: 400% 400%;
-      animation: gradienteSuave 30s ease infinite;
-    }
+  color: white;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  transition: background 1s ease, background-color 1s ease;
+}
+
+/* Fondo degradado predeterminado */
+body:not(.fondo-poemas) {
+  background: linear-gradient(-20deg, #330033, #00334d, #262626, #4d0000, #4C0121, #610009);
+  background-size: 400% 400%;
+  animation: gradienteSuave 20s ease infinite;
+}
+
+/* Fondo estrellado para la sección de poemas */
+body.fondo-poemas {
+  background: url('https://i.pinimg.com/originals/98/e4/d9/98e4d9062f971d5107975800b2998e16.gif') repeat;
+  background-color: #000014;
+  background-size: cover;
+  animation: estrellasFondo 20s linear infinite;
+}
+
 
     header {
       text-align: center;
@@ -129,13 +141,14 @@
     }
 
     .seccion {
-      display: none;
-      padding: 40px;
-    }
+  display: none;
+  transition: all 0.5s ease;
+}
 
-    .seccion.activa {
-      display: block;
-    }
+.seccion.activa {
+  display: block;
+}
+
 
     .tarjeta {
       background: rgba(30, 30, 30, 0.8);
@@ -239,14 +252,30 @@
 
 /* === FONDO CAMBIANTE SUAVE Y POÉTICO === */
 body {
-  color: white;
-  font-family: 'Georgia', serif;
-  margin: 0;
-  background: linear-gradient(-45deg, #330033, #00334d, #262626, #4d0000);
-  background-size: 400% 400%;
-  animation: gradienteSuave 30s ease infinite;
+  transition: background 1s ease, background-color 1s ease;
 }
 
+/* === Fondo degradado general (por defecto) === */
+
+/* Aseguramos que las secciones no bloqueen el fondo animado */
+.seccion, #amigos {
+  background-color: transparent !important;
+}
+
+/* Si tus tarjetas de amigos tienen fondo, que sea semitransparente */
+.tarjeta {
+  background-color: rgba(0, 0, 0, 0.6); /* Elegante y deja ver el gradiente */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: scale(1.03);
+}
+
+/* Animación suave del gradiente */
 @keyframes gradienteSuave {
   0% { background-position: 0% 50%; }
   25% { background-position: 50% 50%; }
@@ -277,17 +306,12 @@ nav button:hover {
 }
 
 .tarjeta {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid gold;
-  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.6); /* Negro con 60% de opacidad */
+  border-radius: 10px;
   padding: 20px;
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 10px #ff00ff55;
 }
+
 
 
 .tarjeta:hover {
@@ -416,6 +440,83 @@ body {
   }
 }
 
+    /* === POEMAS CSS === */
+
+.titulo-seccion {
+  font-size: 2.2em;
+  text-align: center;
+  margin-top: 40px;
+  color: #ffd700;
+}
+
+.descripcion-seccion {
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #ddd;
+}
+
+.filtros-marcas {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filtros-marcas button {
+  background-color: #ff4dd2;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.filtros-marcas button:hover {
+  transform: scale(1.1);
+}
+
+.contenedor-poemas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.contenedor-poemas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.poema.tarjeta {
+  background: #000000aa;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #ff4dd2;
+  padding: 20px;
+  width: 250px;
+  height: auto;
+  color: white;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.poema.tarjeta:hover {
+  transform: scale(1.05);
+}
+
+.poema h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffb347;
+}
+
+.poema p {
+  font-size: 15px;
+  line-height: 1.4;
+}
   </style>
 </head>
 
@@ -433,9 +534,10 @@ body {
   </section>
   
    <nav>
-    <button onclick="mostrar('sobre')">Sobre mí</button>
-    <button onclick="mostrar('amigos')">Amigos</button>
-    <button onclick="mostrar('socios')">Socios</button>
+    <button onclick="mostrarSeccion('sobre')">Sobre mí</button>
+    <button onclick="mostrarSeccion('amigos')">Amigos</button>
+    <button onclick="mostrarSeccion('socios')">Socios</button>
+    <button onclick="mostrarSeccion('poemas')">Poemas</button>
   </nav>
   
   <section id="sobre" class="seccion">
@@ -466,48 +568,173 @@ body {
     </div>
   </section>
 
-  <section id="amigos" class="seccion">
-    <div class="tarjeta" data-aos="fade-right">
-      <h3>Asahe.js</h3>
-      <p>El compa que nunca se va. Hermano de versos y de batallas.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Juanazo Over Heaven (Consejero & Resolvedor)</h3>
-      <img src="Página2ekisde\Fotos\file.jpg" alt="JuanOverHeaven">
-      <p>Con él, la poesía se vuelve carcajada. Leal hasta el último poema.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>.El Gogetto</h3>
-      <p>Filosofía, risas, y noches de reflexiones intensas.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>KingDrizzy</h3>
-      <p>Aliado de sombra y verso. Siempre firme, siempre sabio.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Xrey102</h3>
-      <p>Compañero de pluma, rival de rimas, alma gemela en la lírica. Cuando escribe, la controversia florece.</p>
-    </div>
-  </section>
+ <section id="amigos" class="seccion">
+  <h3 style="text-align: center; font-size: 2em; color: #ff99cc; margin-bottom: 20px;">This is my crazy team  </h3>
+  <div class="bio-container">
 
-  <!-- Nueva sección de SOCIOS aquí -->
-  <section id="socios" class="seccion">
-    <div class="tarjeta">
-      <h3>Socios</h3>
+       <div class="tarjeta amigo">
+    <div class="amigo-info">
+      <img src="https://media.discordapp.net/attachments/1355990793243983973/1386755055679438889/image.png?ex=685adbc9&is=68598a49&hm=46157434d262fc21efb28a7e67087f29674af3d9ddfd9f61da11df8bbe940089&=&format=webp&quality=lossless" alt="asahe">
+          <h3>💥 Asahe.js</h3>
+      <p><strong>Alias:</strong> Reim, Ashe, Gray, El main Tatsumaki más spamer de la actualidad</p>
+      <p>Este maldito hijo de la gran puta es una criatura de hábitos oscuros: adicto a los mangas, los Fumos y a perder el tiempo analizando paneles como si su opinión tuviera peso en la ONU. Vive en una contradicción constante entre creerse protagonista de una historia profunda y tener la personalidad emocional de una piedra pómez.</p>
+      <p>Tiene un miedo casi clínico a las mujeres. Nadie sabe por qué. Tal vez fue mordido por una en su infancia, o quizá simplemente entendió que cualquier intento de coqueteo saldría tan mal como sus partidas en PvP.</p>
+      <p>Es el tipo de persona que critica a los demás por no leer filosofía, pero lleva tres meses en el mismo capítulo de Nietzsche. Cada vez que habla, suena como si estuviera a punto de citar a un autor que nunca leyó.</p>
+      <p>Pero, aún con todo eso, es uno de los mejores amigos de Morningstar. Y aunque a veces parezca que se odian —porque se tratan con más puñaladas que una novela de traición—, su amistad es como esas espadas mágicas que solo brillan cuando hace falta: rota, pero indestructible.</p>
+      <p>No es constante como Juan, ni brillante como Xrey, ni loco como DSANS… pero ha estado ahí cuando importa. La noche que Morningstar se enteró de la infidelidad, Asahe no soltó palabras reconfortantes ni le recitó un poema: simplemente lo invitó a jugar Ronopoly en Roblox. Y así, entre risas, derrotas y venganzas virtuales, tejieron una noche donde el dolor fue reemplazado por absurdos turnos digitales. Le dieron una paliza, sí… pero la pasaron bien. A su modo torcido, esa noche fue un acto de amor fraternal.</p>
+    </div>
+  </div>
+</div>
 
-      <div class="socio">
-        <h4>JP Preciado</h4>
-        <p>Administrador del canal de poesía y provocador oficial.</p>
+   <div class="tarjeta amigo">
+  <div class="amigo-info">
+    <img src="https://media-bog2-1.cdn.whatsapp.net/v/t61.24694-24/456377579_1279718633185047_5599390864772942799_n.jpg?ccb=11-4&oh=01_Q5Aa1wGeEr52wZ37ywfRjwaaVLPC_O8VD5wnp1GPAoLTp4G9uw&oe=68670464&_nc_sid=5e03e0&_nc_cat=101" alt="Juanazo Over Heaven">
+    <div class="info">
+      <h3>🧪 Juanazo Over Heaven</h3>
+      <p><strong>Alias:</strong> Laufey, Gatito Inocente, El Fornicador Maestro, Dr. Sexo, El Parchado Más Grande de la Historia</p>
+      <p>Al igual que Asahe, es uno de los mejores aliados de Morningstar. Su rol como Consejero y Resolvedor lo volvió una brújula moral cuando todo se nublaba. Guió, aconsejó y enderezó más veces de las que el propio Morningstar puede contar.</p>
+      <p>Fue pieza clave durante las relaciones amorosas, dando consejos sabios (y otros no tanto), pero siempre con lealtad brutal y corazón sincero.</p>
+      <p>No lo buscó, pero encontró una amistad de oro. Un hermano de camino. El parche que le puso corazón a una herida emocional.</p>
+    </div>
+  </div>
+</div>
+
+
+   <div class="tarjeta amigo">
+  <div class="amigo-info">
+    <img src="https://images-ext-1.discordapp.net/external/MhEdqH7cQRI5bKGnmOw1Zc4TDgSaZUFRjaAUTEokMag/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/833758650349780992/9dc87553d927ce9a9a3e85b8142d97f6.png?format=webp&quality=lossless" alt="Gogetto">
+    <div class="info">
+       <h3>🌪️ Gogetto</h3>
+      <p><strong>Alias:</strong> Gogetta, Desconocido Encapuchado, Nezuko, "N", El Esnifador de Mundos</p>
+      <p>Gogetto es alguien cuyo vínculo con Morningstar es más resistente que sus relaciones con la lógica. Se conocen desde hace años y, como todo amor latino que se respeta, han tenido peleas, berrinches, silencios eternos… pero siempre terminan volviendo como dos padres divorciados que aún comparten Netflix.</p>
+      <p>Filosofa sobre Jojo’s, pero ni siquiera recuerda cuántos Jojos van. En Pokémon, una vez le lanzó Terremoto a un Latios. Sí, un Latios. Lo peor es que ganó.</p>
+      <p>Fan declarado de Scissors Seven, Dragon Ball y One Punch Man, aunque nunca terminó nada porque el man va a un capítulo por año. Y sobre Chainsaw Man… bueno, sigue defendiendo la segunda parte con uñas, dientes y excusas... solo para no aceptar que perdió el tiempo desde que mataron a Nayuta.</p>
+      <p>
+      Pese a todos sus defectos —que no son pocos—, Gogetto es un gran amigo de Morningstar. No lo aconseja con frecuencia, pero cuando lo hace, sus palabras no caen en saco roto. La noche en que Morningstar descubrió la infidelidad, fue él quien, sin decir mucho, lo invitó a jugar Ronopoly —le dieron una paliza—. Entre risas, el ruido de los dados digitales, y sus gritos de dolor y frustración por lo mal que iba, lograron silenciar el dolor por unas horas. Perdieron cada ronda, pero ganaron algo más valioso: ese tipo de conexión silenciosa que no se dice, pero se siente. Su amistad es como fuego antiguo: arde, se apaga, pero siempre vuelve a encenderse con una chispa cuando más se necesita.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="tarjeta amigo">
+  <div class="amigo-info">
+    <img src="https://images-ext-1.discordapp.net/external/lRXJ8y0TUw9MP-Ip7B8CM7WIm-iCVswxOVOco1WzZAA/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/715189149514203226/f0a5494ee28e93e72300672c0243f1ed.png?format=webp&quality=lossless" alt="Drizzy">
+    <div class="info">
+      <h3>💀 Drizzy</h3>
+      <p><strong>Alias:</strong> King Drizz, Penetreitor700, Dedito_ONLINE, Catto's Secret Boyfriend</p>
+      <p>Drizzy es como una línea de diálogo de NPC bugueado: no sabes si está troleando, filosofando o directamente atacando tu integridad mental. Sabe que su apodo suena virgen, y por eso lo lleva con más orgullo que diploma universitario. Lo de “King” no es por nobleza, sino porque se proclama el rey del shitpost con argumentos reciclados y rencor estético.</p>
+      <p>Se mete con todos, discute por placer, y responde con más “XDDDD” que lógica… pero aun así, tiene un lugar fijo en la esquina ruidosa del corazón de Morningstar. Le dicen Penetreitor, pero no por lo que piensas: su ataque es psicológico. Experto en decir sandeces con tono de sabio y robar tarjetas de crédito “para tareas de economía”. </p>
+      <p>Cuando no está troleando en el grupo, probablemente esté afk en RDR2, jugando el online de GTA5 o diciendo que su user es "God". En fin… un personaje tan irremplazable como innecesario. Por eso lo queremos aunque sea un pendejo la mayor parte del tiempo.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="tarjeta amigo">
+  <div class="amigo-info">
+    <img src="https://media.discordapp.net/attachments/1355990793243983973/1386913053248847952/ffc29dace19f6c25e9ef708207b4ecff.jpg?ex=685b6eef&is=685a1d6f&hm=268a6295b7cc7b75af2b5059bb619f060d6f9c8e5d584b3a40a1db3eabaade51&=&format=webp" alt="Xrey">
+    <div class="info">
+      <h3>🌒 Xrey</h3>
+      <p><strong>Alias:</strong> Negro (Por Juan), Xgay (Por Morningstar), "Hijo de puta" (Por Gogetto)</p>
+      <p>Xrey fue, en sus inicios, un pequeño villano de barrio: altanero, molesto, con complejo de antagonista de shōnen temprano. Su presencia daba ganas de lincharlo... o al menos silenciarlo. Pero con el tiempo, algo cambió: se calmó, se volvió sereno, abrazó la paz, y dejó atrás la época en la que creía que burlarse era una habilidad social.</p>
+      <p> En un punto, su vínculo con Morningstar trascendió lo típico. Fue más que un amigo: fue consejero, guía y terapeuta informal. Antes de que Juan llegara con su bata de sabiduría, Xrey ya estaba ahí, hablando de filosofía y ayudando a interpretar el caos de la vida con palabras que, para sorpresa de todos, tenían sentido.</p>
+      <p> Su relación fue una evolución digna de saga: de enemigos naturales a dúo introspectivo. Pasaron de parecer psicólogo y paciente a parecer... simplemente amigos. Porque a pesar de su tendencia a desaparecer, de las peleas, o de los silencios eternos, Xrey tiene un rincón especial en el corazón del Morningstar. Y lo merece.</p>
+    </div>
+  </div>
+</div>
+
+</section>
+<!-- Sección de SOCIOS con tarjetas separadas y foto -->
+<section id="socios" class="seccion">
+  <h2>🤝 Socios</h2>
+
+  <!-- Tarjeta de JP -->
+  <div class="tarjeta socio">
+    <div class="socio-info">
+      <img src="https://i.pinimg.com/736x/4b/1f/40/4b1f40347a27c3893cb6caac8b132dd1.jpg" alt="JP Preciado">
+      <div class="info">
+        <h3>🥊 JP Preciado</h3>
+        <p><strong>Alias:</strong> Naya, La Cabra, Culión, Azzasi</p>
+        <p>Administrador del canal de poesía, agitador de conciencias dormidas y visionario del caos elegante.</p>
+        <p>Fanático del boxeo: lo analiza, lo vive, lo entrena... y, si pudiera, lo narraría en verso.</p>
+        <p>Sus combos favoritos no están en el ring, sino en los comentarios. Sabe lo que hace... aunque parezca que no.</p>
+        <p>El mejor socio que no pediste, pero que terminó siendo necesario.</p>
       </div>
+    </div>
+  </div>
 
-      <div class="socio">
-        <h4>DSANS</h4>
-        <img src="Página2ekisde\Fotos\d738efa6-be58-4292-9cd0-0c67d100e099.jpg" alt="DSANS">
-        <p>Aliado creativo y creador de su propio universo digital.</p>
+  <!-- Tarjeta de DSANS -->
+  <div class="tarjeta socio">
+    <div class="socio-info">
+      <img src="https://preview.redd.it/silver-memes-v0-pttou5lv60me1.jpg?width=640&crop=smart&auto=webp&s=70b03ced3f94b937df82a8cc740c3e541bcaa3c4" alt="DSANS">
+      <div class="info">
+        <h3>💻 DSANS</h3>
+        <p><strong>Alias:</strong> DS, Lolicón del Código, "Judas", Sochadow</p>
+        <p>Es un tipazo medio raro, exponente actual del comunismo y enemigo #1 de Perú.</p>
+        <p>Un loco que teoriza muchas cosas y le encantan <s>las lolis</s> los juegos retro.</p>
+        <p>Amigo del Morningstar y principal informático del grupo. Se teoriza que a pesar de todo, solo cuenta con 2 neuronas: una quemada y otra de vacaciones.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- == APARTADO DE POEMAS== -->
+
+<section id="poemas" class="seccion">
+  <h2>🖋️ Mis Poemas</h2>
+  <p>Explora mis versos organizados por marcas, alma y esencia lírica.</p>
+  
+  <div class="filtros-marcas">
+    <button onclick="filtrarPoemas('todos')">Todos</button>
+    <button onclick="filtrarPoemas('morningstar')">🌟 Estilo Morningstar</button>
+    <button onclick="filtrarPoemas('angelmj')">🎤 Estilo AngelMJ</button>
+    <button onclick="filtrarPoemas('shidou')">😈 Estilo Shidou</button>
+    <button onclick="filtrarPoemas('cifer')">🖤 Estilo Cifer</button>
+  </div>
+
+  <div class="contenedor-poemas">
+    <div class="poema tarjeta morningstar">
+      <h3>Versos del Amanecer</h3>
+      <p>Un canto que florece entre el dolor y la tinta divina. Aquí va el poema completo, desplegado desde el principio.</p>
+    </div>
+    <div class="poema tarjeta morningstar">
+      <h3>Poema 2 Morningstar</h3>
+      <p>Contenido completo del poema 2 de la marca Morningstar.</p>
+    </div>
+    <div class="poema tarjeta morningstar">
+      <h3>Poema 3 Morningstar</h3>
+      <p>Contenido completo del poema 3 de la marca Morningstar.</p>
+    </div>
+    <div class="poema tarjeta morningstar">
+      <h3>Poema 4 Morningstar</h3>
+      <p>Contenido completo del poema 4 de la marca Morningstar.</p>
+    </div>
+    <div class="poema tarjeta morningstar">
+      <h3>Poema 5 Morningstar</h3>
+      <p>Contenido completo del poema 5 de la marca Morningstar.</p>
+    </div>
+
+    <div class="poema tarjeta angelmj">
+      <h3>El Chico de las Poesías</h3>
+      <p>Un susurro con ritmo, con el alma de Papá Jackson. Aquí va el poema completo, desplegado desde el principio.</p>
+    </div>
+    <!-- Repetir para los otros 4 de AngelMJ -->
+
+    <div class="poema tarjeta shidou">
+      <h3>Proyección Carmesí</h3>
+      <p>Versos con filo, velocidad y deseo ritual. Aquí va el poema completo, desplegado desde el principio.</p>
+    </div>
+    <!-- Repetir para los otros 4 de Shidou Miguel -->
+
+    <div class="poema tarjeta cifer">
+      <h3>Silencio Hueco</h3>
+      <p>Donde Ulquiorra sangra palabras desde el fondo de mi alma. Aquí va el poema completo, desplegado desde el principio.</p>
+    </div>
+    <!-- Repetir para los otros 4 de Cifer Miguel -->
+  </div>
+</section>
 
  <!-- === SCRIPTS Y FUNCIONES === -->
   <script>
@@ -515,6 +742,23 @@ body {
       document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activa'));
       document.getElementById(id).classList.add('activa');
     }
+
+function mostrar(id) {
+  // Oculta todas las secciones
+  document.querySelectorAll('.seccion').forEach(sec => {
+    sec.classList.remove('activa');
+    sec.style.display = 'none';
+  });
+
+  // Muestra solo la sección seleccionada
+  const activa = document.getElementById(id);
+  if (activa) {
+    activa.classList.add('activa');
+    activa.style.display = 'block';
+  }
+}
+
+
 
     const frases = [
       { texto: "A veces uno cree que ciertas puertas ya están cerradas...", marca: "morningstar" },
@@ -549,6 +793,37 @@ body {
     }
 
     mostrarFrasesAleatorias();
+
+    /* LÓGICA DE POEMAS */
+    
+    function filtrarPoemas(marca) {
+  const poemas = document.querySelectorAll('.poema');
+  poemas.forEach(poema => {
+    poema.style.display = (marca === 'todos' || poema.classList.contains(marca)) ? 'block' : 'none';
+  });
+}
+
+/* FONDO DE LA SECCIÓN PARA POEMAS */
+
+function mostrarSeccion(id) {
+  document.querySelectorAll('.seccion').forEach(seccion => {
+    seccion.style.display = 'none';
+  });
+
+  const target = document.getElementById(id);
+  if (target) target.style.display = 'block';
+
+  // Fondo estrellado solo para poemas
+  if (id === 'poemas') {
+    document.body.classList.add('fondo-poemas');
+  } else {
+    document.body.classList.remove('fondo-poemas');
+  }
+}
+
+
+
+
   </script>
 </body>
 </html>
