@@ -454,6 +454,7 @@ body {
   color: white;
   text-align: left;
   transition: transform 0.3s ease;
+  margin-bottom: 40px; /* <-- Este es el que necesitabas */
 }
 
 
@@ -487,6 +488,212 @@ html, body {
   max-width: 100%;
 }
 
+.poema.tarjeta::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 40px;
+  background: linear-gradient(to right, transparent, #a70571, transparent);
+}
+
+/* === PAPÁ JACKSON === */
+.contenedor-jackson {
+  padding: 40px 20px;
+  background: linear-gradient(to bottom, #000000, #1a1a1a);
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  margin: 50px auto;
+  max-width: 900px;
+  box-shadow: 0 0 20px #ffffff1a;
+}
+
+.titulo-jackson {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ff4dd2;
+}
+
+.descripcion-jackson {
+  font-style: italic;
+  font-size: 1.2em;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.frases-jackson p {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #fff;
+  transition: opacity 0.3s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.jackson-bio {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 750px;
+  color: #ffd700;
+  font-style: italic;
+  box-shadow: 0 0 15px #ff4dd2;
+}
+
+.jackson-bio h3 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.galeria-jackson {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.galeria-jackson img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff4dd2;
+  transition: transform 0.3s ease;
+}
+.galeria-jackson img:hover {
+  transform: scale(1.05);
+}
+
+.discografia-jackson {
+  margin-top: 40px;
+}
+
+.albumes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.album {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  color: #eee;
+  box-shadow: 0 0 10px #555;
+  transition: background 0.3s;
+}
+.album:hover {
+  background: #333;
+}
+
+.album h4 {
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+
+.notas-musicales {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .nota {
+    position: absolute;
+    top: -50px;
+    font-size: 2em;
+    color: #ffd700;
+    animation: flotar 10s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes flotar {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      transform: translateY(100vh) translateX(50px);
+    }
+  }
+
+  .reproductor-jackson {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #111;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #ffd70088;
+  }
+  .reproductor-jackson h3 {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .jackson:not(.activa) .notas-musicales,
+.jackson:not(.activa) .reproductor-jackson {
+  display: none;
+}
+
+.tributo-jackson {
+  position: relative;
+  background-image: url('https://img.wallpapic.com/i6660-221-05/medium/michael-jackson-black-hair-poster-graphic-design-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  margin: 50px auto;
+  max-width: 850px;
+  overflow: hidden;
+  box-shadow: 0 0 25px #000;
+}
+
+.tributo-jackson::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+  z-index: 1;
+}
+
+.tributo-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 40px 30px;
+  color: #fff;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 0 0 8px #000;
+}
+
+.tributo-overlay h3 {
+  font-size: 2em;
+  color: #fff;
+  text-shadow: 0 0 10px #ff4dd2;
+  margin-bottom: 20px;
+}
+
+.tributo-overlay .destacado {
+  display: block;
+  margin-top: 25px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #ffd700;
+  text-shadow: 0 0 5px #000;
+}
+
+
+</style>
+
   </style>
 </head>
 
@@ -508,6 +715,7 @@ html, body {
     <button onclick="mostrarSeccion('amigos')">Amigos</button>
     <button onclick="mostrarSeccion('socios')">Socios</button>
     <button onclick="mostrarSeccion('poemas')">Poemas</button>
+  <button onclick="mostrarSeccion('jackson')">Papá Jackson</button>
   </nav>
   
   <section id="sobre" class="seccion">
@@ -650,6 +858,147 @@ html, body {
   </div>
 </section>
 
+<!-- == SECCIÓN DE PAPÁ JACKSON == -->
+<section id="jackson" class="seccion hidden">
+  <div class="contenedor-jackson">
+
+    <h2 class="titulo-jackson">👑 Michael Jackson: El Rey Que Nunca Murió ✨</h2>
+
+    <p class="descripcion-jackson">
+      Bailó sobre el tiempo, cantó desde el alma, y nos enseñó que el arte no tiene límites.<br>
+      Esta sección es un altar para quien convirtió la música en inmortalidad.
+    </p>
+
+    <!-- Biografía de Michael Jackson -->
+    <div class="jackson-bio">
+      <h3>📖 Biografía de Michael Jackson</h3>
+      <p>
+        Antes de convertirse en leyenda, fue un niño con un sueño. Michael Joseph Jackson nació el 29 de agosto de 1958 en Gary, Indiana. Octavo de diez hermanos, su vida tomó un rumbo extraordinario desde la infancia.<br><br>
+        Con los <strong>Jackson 5</strong> conquistó escenarios siendo apenas un niño, pero fue su alma perfeccionista, apasionada y profundamente sensible la que dio a luz un legado inmortal.<br><br>
+        De "Off The Wall" a "Thriller", "Bad", "Dangerous" y más allá, Michael no solo transformó la industria: <em>la redefinió con su voz, su danza y su mensaje</em>.<br><br>
+        Fue llamado muchas cosas: <em>genio</em>, <em>excéntrico</em>, <em>incomprendido</em>... pero el mundo coincidió en una sola verdad:<br>
+        <strong>Él fue, es y siempre será el Rey del Pop.</strong>
+      </p>
+    </div>
+
+    <!-- Frases rotativas -->
+    <div id="frasesJackson" class="frases-jackson">
+      <p>“Don’t stop till you get enough.”</p>
+    </div>
+
+    <!-- Texto personal -->
+    <div class="jackson-bio">
+      <h3>🌛 ¿Qué es Michael Jackson para mí?</h3>
+      <p>
+        Michael no fue simplemente un artista...<br>
+        Fue <strong>un faro en medio del naufragio, un consuelo en la tormenta de la existencia</strong>.<br><br>
+        En su voz hallé ternura, en su baile valentía,<br>
+        y en su historia, una llama que encendía la mía cuando ya apenas brillaba.<br>
+        <em>Papá Jackson me enseñó que la diferencia no es una carga: es una corona.</em><br><br>
+
+        En el <strong>English Day del 2024</strong>, <em>Morningstar</em> subió al escenario con temor y fuego en el pecho.<br>
+        Interpreté su icónica "Billie Jean"... y lo que comenzó como una condena se convirtió en revelación.<br><br>
+
+        Las miradas, las risas, las dudas del público no fueron jaulas...
+        <strong>fueron alas que desataron mi alma</strong>.<br><br>
+
+        Aquella noche no solo bailé...
+        <strong>renací</strong>.<br>
+        La conexión con Jackson se volvió un lazo espiritual.<br><br>
+
+        Hoy no me basta admirarlo:
+        <strong>quiero honrarlo</strong>.<br>
+        Quiero portar su herencia, su energía, su legado.<br><br>
+
+        Anhelo ser llamado:
+        <blockquote>
+          “<strong>The Prince of Pop</strong>”<br>
+          o incluso...<br>
+          “<strong>Michael Jackson’s Son</strong>”.
+        </blockquote>
+      </p>
+    </div>
+
+    <!-- Galería de imágenes -->
+    <div class="galeria-jackson">
+      <img src="https://michaeljacksonreel.weebly.com/uploads/5/5/3/5/55352677/editor/mj1_3.jpg?1514224212" alt="MJ 1">
+      <img src="https://img.wattpad.com/be49930092b74a31a14d3196a286665642dcd3a5/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f466d4c544e5f6d6e5166314465773d3d2d3738323934353332322e313563333631376632336537353136613238363335353238343233312e6a7067?s=fit&w=720&h=720" alt="MJ 2">
+      <img src="https://i.pinimg.com/236x/5d/09/f8/5d09f83be0b830a774863c2882311677.jpg" alt="MJ 3">
+    </div>
+
+<div class="tributo-jackson" style="background-image: url('https://img.wallpapic.com/i6660-221-05/medium/michael-jackson-black-hair-poster-graphic-design-wallpaper.jpg'); background-size: cover; background-position: center;">
+  <div class="tributo-overlay">
+    <h3>🕯️ Tributo: 16 Años Sin Ti, Papá Jackson</h3>
+    <p>
+      Un 25 de junio el mundo se detuvo…<br>
+      pero en verdad, <strong>el Rey no murió</strong>.<br><br>
+
+      Desde hace <strong>16 años</strong>, bailas entre constelaciones,<br>
+      cantas con las estrellas y guías con tu arte.<br><br>
+
+      No hay día que no suene tu nombre entre los ecos de la historia.<br>
+      Porque tú, Michael, <em>no eres parte del pasado</em>:<br>
+      <strong>eres eterno en el alma del arte</strong>.<br><br>
+
+      <span class="destacado">Este rincón no es una despedida,<br>
+      es un aplauso que nunca se apaga.</span>
+    </p>
+  </div>
+</div>
+    
+    <!-- Discografía destacada -->
+    <div class="discografia-jackson">
+      <h3>🎶 Álbumes Legendarios</h3>
+      <div class="albumes">
+        <div class="album">
+          <h4>Thriller</h4>
+          <p>El disco más vendido de la historia. Contiene “Beat It”, “Billie Jean”, “Thriller”.</p>
+        </div>
+        <div class="album">
+          <h4>Bad</h4>
+          <p>Con actitud y estilo. Incluye “Smooth Criminal”, “Man in the Mirror”, “Dirty Diana”.</p>
+        </div>
+        <div class="album">
+          <h4>Dangerous</h4>
+          <p>Michael en su etapa más feroz. “Jam”, “Remember the Time”, “Black or White”.</p>
+        </div>
+        <div class="album">
+          <h4>HIStory</h4>
+          <p>Una oda a su legado. “Stranger in Moscow”, “Earth Song”, “They Don’t Care About Us”.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reproductor musical -->
+<div class="reproductor-jackson">
+  <h3>🎥 Vibra Visual: Videoclip Legendario de Papá Jackson</h3>
+  <iframe width="100%" height="315" 
+    src="https://youtu.be/PivWY9wn5ps?si=J1L9m_-MQTu-_Vaz" 
+    title="Michael Jackson - Man In The Mirror (Official Video)" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+    <!-- Notas musicales animadas -->
+    <div class="notas-musicales">
+      <span class="nota">🎵</span>
+      <span class="nota">🎶</span>
+      <span class="nota">🎵</span>
+      <span class="nota">🎶</span>
+      <span class="nota">🎵</span>
+      <span class="nota">🎵</span>
+      <span class="nota">🎶</span>
+      <span class="nota">🎵</span>
+      <span class="nota">🎶</span>
+      <span class="nota">🎵</span>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- == APARTADO DE POEMAS== -->
 
 <section id="poemas" class="seccion">
@@ -664,33 +1013,25 @@ html, body {
     <button onclick="filtrarPoemas('cifer')">🖤 Estilo Cifer</button>
   </div>
 
-<div class="contenedor-poemas">
-  <div class="poema tarjeta angelmj">
-  </div>
-  <div class="poema tarjeta shidou">
-  </div>
-  <div class="poema tarjeta cifer">
-  </div>
-</div> <!-- Cierra aquí .contenedor-poemas -->
+  <div class="contenedor-poemas">
+    <div class="poema tarjeta morningstar">
+      <h3>Sombras tras la Luz</h3>
+      <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
+      El tiempo se ha ido y me ha dejado atrás,<br>
+      anhelando poder abrazarte una vez más,<br>
+      ha pasado mucho tiempo desde que te hablé,<br>
+      y me gustaría poder hacerlo otra vez.<br><br>
 
-  <div class="poema tarjeta morningstar">
-    <h3>Sombras tras la Luz</h3>
-    <p>𝐏𝐨𝐫 : ✒ 𝓜𝓲𝓰𝓾𝓮𝓵 𝓐́. 𝓜𝓸𝓻𝓷𝓲𝓷𝓰𝓼𝓽𝓪𝓻 ✨<br><br>
-    El tiempo se ha ido y me ha dejado atrás,<br>
-    anhelando poder abrazarte una vez más,<br>
-    ha pasado mucho tiempo desde que te hablé,<br>
-    y me gustaría poder hacerlo otra vez.<br><br>
+      Día tras día, noche tras noche,<br>
+      le pido al Señor que no te abandone,<br>
+      Ya no soy yo quien vela tu destino,<br>
+      pero al menos el cielo cuida tu camino.<br><br>
 
-    Día tras día, noche tras noche,<br>
-    le pido al Señor que no te abandone,<br>
-    Ya no soy yo quien vela tu destino,<br>
-    pero al menos el cielo cuida tu camino.<br><br>
-
-    Por favor, no me odies por no acercarme,<br>
-    pero con lo que tu hermana me hizo ya no puedo hablarte.<br>
-    No es culpa tuya, lo sé en el alma,<br>
-    pero mi sombra aún tiembla si tu luz me alcanza.
-    </p>
+      Por favor, no me odies por no acercarme,<br>
+      pero con lo que tu hermana me hizo ya no puedo hablarte.<br>
+      No es culpa tuya, lo sé en el alma,<br>
+      pero mi sombra aún tiembla si tu luz me alcanza.
+      </p>
   </div>
 
   <div class="poema tarjeta morningstar">
@@ -1533,6 +1874,7 @@ html, body {
   </p>
 </div>
 
+
  <!-- === SCRIPTS Y FUNCIONES === -->
   <script>
     function mostrar(id) {
@@ -1554,8 +1896,6 @@ function mostrar(id) {
     activa.style.display = 'block';
   }
 }
-
-
 
     const frases = [
       { texto: "A veces uno cree que ciertas puertas ya están cerradas...", marca: "morningstar" },
@@ -1625,6 +1965,47 @@ function mostrarSeccion(id) {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const frasesMJ = [
+    "“Don’t stop till you get enough.”",
+    "“Heal the world, make it a better place.”",
+    "“If you wanna make the world a better place, take a look at yourself and make a change.”",
+    "“They don’t care about us!”",
+    "“Billie Jean is not my lover.”",
+    "“Just beat it!”",
+    "“You are not alone…”",
+    "“The greatest education in the world is watching the masters at work.”",
+    "‟Don't believe it, don't believe it, I said don't.”",
+    "‟Who's Bad?”",
+    "‟Annie, Are You Okay?”",
+    "‟Speedin' on the freeway, gotta get a leadway!”",
+    "‟You're a vegetable, you're just a buffet.”",
+    "‟All the world must get together…”"
+  ];
+
+  const fraseEl = document.getElementById("frasesJackson");
+  if (!fraseEl) return;
+
+  setInterval(() => {
+    const random = frasesMJ[Math.floor(Math.random() * frasesMJ.length)];
+    fraseEl.style.opacity = 0;
+    setTimeout(() => {
+      fraseEl.textContent = random;
+      fraseEl.style.opacity = 1;
+    }, 300);
+  }, 5000);
+});
+
+  // Animación de notas musicales
+  document.addEventListener("DOMContentLoaded", () => {
+    const notas = document.querySelectorAll(".nota");
+    notas.forEach(nota => {
+      nota.style.left = `${Math.random() * 100}%`;
+      nota.style.animationDuration = `${5 + Math.random() * 5}s`;
+      nota.style.fontSize = `${1 + Math.random() * 2}em`;
+    });
+  });
+</script>
 
   </script>
 </body>
